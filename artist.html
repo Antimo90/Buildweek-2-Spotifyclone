@@ -16,351 +16,373 @@
     />
     <link rel="stylesheet" href="assets/css/sidebar.css" />
     <link rel="stylesheet" href="assets/css/centrale-arista.css" />
+    <link rel="stylesheet" href="assets/css/album.css" />
   </head>
   <body class="bg-black">
     <header></header>
-    <main>
-      <!-- SIDEBAR: menu di navigazione e playlist utente -->
-      <aside class="sidebar bg-black text-white d-flex flex-column p-3">
-        <!-- Menu principale -->
-        <ul class="nav flex-column mb-3">
-          <li class="nav-item mb-1 dropdown">
-            <a
-              class="nav-link text-secondary d-flex align-items-center justify-content-center dropdown-toggle"
-              href="#"
-              id="moreDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              title="Altro"
-            >
-              <i class="bi bi-three-dots fs-5"></i>
-            </a>
-            <ul
-              class="dropdown-menu bg-dark border-0 shadow"
-              aria-labelledby="moreDropdown"
-            >
-              <li>
-                <a
-                  class="dropdown-item text-white d-flex align-items-center"
-                  href="#"
-                >
-                  <i class="bi bi-music-note-beamed me-2"></i> Musica
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-white d-flex align-items-center"
-                  href="#"
-                >
-                  <i class="bi bi-person me-2"></i> Artisti
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-white d-flex align-items-center"
-                  href="#"
-                >
-                  <i class="bi bi-disc me-2"></i> Album
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item mb-1">
-            <a
-              class="nav-link text-white d-flex align-items-center"
-              href="homepage.html"
-            >
-              <i class="bi bi-house-door-fill me-2"></i> Home
-            </a>
-          </li>
-          <li class="nav-item mb-1">
-            <a class="nav-link text-white d-flex align-items-center" href="#">
-              <i class="bi bi-search me-2"></i> Cerca
-            </a>
-          </li>
-          <li class="nav-item mb-1">
-            <a class="nav-link text-white d-flex align-items-center" href="#">
-              <i class="bi bi-collection me-2"></i> La tua libreria
-            </a>
-          </li>
-        </ul>
-        <!-- Sezione playlist e preferiti -->
-        <ul class="nav flex-column mb-3">
-          <li class="nav-item mb-1">
-            <a class="nav-link text-white d-flex align-items-center" href="#">
-              <i class="bi bi-plus-square-fill me-2"></i> Crea playlist
-            </a>
-          </li>
-          <li class="nav-item mb-1">
-            <a class="nav-link text-white d-flex align-items-center" href="#">
-              <i class="bi bi-heart-fill me-2"></i> Brani che ti piacciono
-            </a>
-          </li>
-          <li class="nav-item mb-1">
-            <a class="nav-link text-white d-flex align-items-center" href="#">
-              <i class="bi bi-bookmark-fill me-2"></i> I tuoi episodi
-            </a>
-          </li>
-        </ul>
-        <hr />
-        <!-- Lista playlist -->
-        <div class="playlist-list">
-          <ul class="list-unstyled mb-0">
-            <li>early stage emily syndrome (sett-ott 2022)</li>
-            <li>Be The Young</li>
-            <li>"..." cit. Kimiko (lug-ago 2022)</li>
-            <li>saggio vibes 🕺💃</li>
-            <li>main character energy (mag-giu 2022)</li>
-            <li>that fucking mood 🦇</li>
-            <li>VEE, CARLOTTA E GIACOMO VANNO A BOSIO</li>
-            <li>An Emily Winchester kind of mood 👑</li>
-            <li>landing page (mar-apr 2022)</li>
-            <li>2021 lol</li>
-            <li>cosa cazzo vuol dire questa affermazione...</li>
-            <li>honey and glass (nov-dic 2022)</li>
-            <li>(Revenge) Training Arc</li>
-            <li>Lidia 💛 Emily</li>
-            <li>minecraft e nintendo switch (sep-oct 2021)</li>
-            <li>silvano d'orba? hardly know her (lug-ago 2021)</li>
-            <li>Culo 2021</li>
-            <li>Frah Quintale Mix</li>
-            <li>Francesco Guccini Mix</li>
-          </ul>
-        </div>
-      </aside>
-      <!-- MAIN CONTENT: parte centrale della pagina artista -->
-      <div class="artist-content bg-dark text-white">
-        <!-- HEADER ARTISTA/ALBUM: mostra copertina, info artista/album, frecce navigazione e menu utente -->
-        <div
-          class="album-header-spotify d-flex align-items-center position-relative"
-        >
-          <!-- Frecce navigazione (sinistra) -->
-          <div class="album-nav-arrows">
-            <button class="btn btn-dark btn-circle-spotify me-2">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-            <button class="btn btn-dark btn-circle-spotify">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-          </div>
-          <!-- Copertina + info -->
-          <div class="d-flex align-items-end flex-grow-1">
-            <!-- Copertina album/artista -->
-            <img
-              src="assets/imgs/main/image-1.jpg"
-              alt="Copertina Album"
-              class="album-cover-spotify"
-            />
-            <!-- Info album/artista -->
-            <div class="album-info-spotify ms-4">
-              <!-- Tipo (Album/Artista), Titolo, Meta info -->
-              <span class="album-type-spotify text-uppercase mb-2">Album</span>
-              <h1 class="album-title-spotify">Gioventù brucata</h1>
-              <div class="album-meta-spotify mt-3">
-                <span class="fw-bold">Pinguini Tattici Nucleari</span>
-                <span class="mx-2">•</span>
-                <span>2017</span>
-                <span class="mx-2">•</span>
-                <span>12 brani, 53 min 20 sec.</span>
-              </div>
-            </div>
-          </div>
-          <!-- Menu utente a tendina (destra) -->
-          <div class="album-user-profile dropdown">
-            <button
-              class="btn btn-dark d-flex align-items-center rounded-pill px-3 py-1 dropdown-toggle"
-              id="artistDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="assets/imgs/main/image-2.jpg"
-                alt="User"
-                class="rounded-circle me-2"
-                style="width: 32px; height: 32px"
-              />
-              <span>Lidia Nautilus ...</span>
-            </button>
-            <ul
-              class="dropdown-menu dropdown-menu-end bg-dark border-0 shadow"
-              aria-labelledby="artistDropdown"
-            >
-              <li>
-                <a class="dropdown-item text-white" href="#">Profilo artista</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="#">Condividi</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider bg-secondary" />
-              </li>
-              <li>
-                <a class="dropdown-item text-danger" href="#">Segnala</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- BARRA DEI CONTROLLI: play, like, download, opzioni -->
-        <div
-          class="artist-controls-spotify d-flex align-items-center gap-3 mb-4"
-          style="margin-top: 24px"
-        >
-          <!-- Bottone Play -->
-          <button class="btn btn-success btn-play-spotify" title="Riproduci">
-            <i class="bi bi-play-fill"></i>
-          </button>
-          <!-- Checkbox Like (cuore) -->
-          <input
-            type="checkbox"
-            class="btn-check"
-            id="likeCheck"
-            autocomplete="off"
-          />
-          <label
-            class="btn btn-outline-light btn-icon-spotify"
-            for="likeCheck"
-            title="Aggiungi ai preferiti"
-          >
-            <i class="bi bi-heart"></i>
-            <i class="bi bi-heart-fill"></i>
-          </label>
-          <!-- Bottone Download -->
-          <button
-            class="btn btn-outline-light btn-icon-spotify"
-            title="Scarica"
-          >
-            <i class="bi bi-arrow-down-circle"></i>
-          </button>
-          <!-- Bottone Opzioni -->
-          <button
-            class="btn btn-outline-light btn-icon-spotify"
-            title="Altre opzioni"
-          >
-            <i class="bi bi-three-dots"></i>
-          </button>
-        </div>
-
-        <!-- TABELLA BRANI POPOLARI: lista dei brani principali dell'artista/album -->
-        <div class="artist-main-spotify px-5 py-4">
-          <h2
-            class="h5 mb-3 text-uppercase text-secondary"
-            style="letter-spacing: 1px"
-          >
-            Brani popolari
-          </h2>
-          <table
-            class="table table-borderless table-dark table-spotify mb-5 align-middle"
-          >
-            <thead>
-              <tr>
-                <th scope="col" class="col-1">#</th>
-                <th scope="col">TITOLO</th>
-                <th scope="col" class="col-2 text-end">RIPRODUZIONI</th>
-                <th scope="col" class="col-1 text-end"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Riga brano 1 -->
-              <tr class="track-spotify">
-                <td>
-                  <span class="track-number-spotify">1</span>
-                  <span class="track-play-spotify"
-                    ><i class="bi bi-play-fill"></i
-                  ></span>
-                </td>
-                <td>
-                  <div class="fw-bold">Montanelli - Intro</div>
-                  <div class="text-secondary small">
-                    Pinguini Tattici Nucleari
-                  </div>
-                </td>
-                <td class="text-end">694.578</td>
-                <td class="text-end text-secondary">1:28</td>
-              </tr>
-              <!-- Riga brano 2 -->
-              <tr class="track-spotify">
-                <td>
-                  <span class="track-number-spotify">2</span>
-                  <span class="track-play-spotify"
-                    ><i class="bi bi-play-fill"></i
-                  ></span>
-                </td>
-                <td>
-                  <div class="fw-bold">Sciare</div>
-                  <div class="text-secondary small">
-                    Pinguini Tattici Nucleari
-                  </div>
-                </td>
-                <td class="text-end">5.585.178</td>
-                <td class="text-end text-secondary">4:41</td>
-              </tr>
-              <!-- Altri brani... -->
-            </tbody>
-          </table>
-
-          <!-- SEZIONE ALBUM: griglia degli album dell'artista -->
-          <h2
-            class="h5 mb-3 text-uppercase text-secondary"
-            style="letter-spacing: 1px"
-          >
-            Album
-          </h2>
-          <div class="row row-cols-2 row-cols-md-4 g-4">
-            <!-- Card album 1 -->
-            <div class="col">
-              <div
-                class="card bg-black text-white border-0 album-card-spotify h-100"
-              >
-                <img
-                  src="assets/imgs/main/image-2.jpg"
-                  class="card-img-top"
-                  alt="Album"
-                />
-                <div class="card-body p-2">
-                  <h5 class="card-title mb-1" style="font-size: 1.1rem">
-                    Nome Album
-                  </h5>
-                  <p
-                    class="card-text"
-                    style="font-size: 0.95rem; color: #b3b3b3"
-                  >
-                    2023
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Altri album... -->
-          </div>
-        </div>
-      </div>
-    </main>
-    <main class="ps-3 pe-3" style="overflow: hidden">
+    <main class="ps-3 pe-3" style="overflow-x: hidden; overflow-y: auto">
       <!-- Lavoro sulla sidebar di sinistra e destra e la colonna centrale per la versione Homepage -->
 
       <div class="row">
         <!-- Sidebar di sinistra -->
         <div
-          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3"
+          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-3 sidebar-spotify"
+          style="min-width: 250px"
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium
-          fugit quis a rem eum cupiditate debitis repudiandae cumque perferendis
-          fugiat fuga, non, amet sunt recusandae laboriosam totam possimus cum
-          soluta!
+          <!-- Tre puntini come dropdown -->
+          <div
+            class="d-flex justify-content-center align-items-center mb-4"
+            style="height: 32px"
+          >
+            <div class="dropdown">
+              <button
+                class="btn btn-dark border-0 p-0"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="font-size: 1.5rem"
+              >
+                &#8226;&#8226;&#8226;
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li><a class="dropdown-item" href="#">Musica</a></li>
+                <li><a class="dropdown-item" href="#">Artisti</a></li>
+                <li><a class="dropdown-item" href="#">Album</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Menu principale -->
+          <ul class="nav flex-column mb-3">
+            <li class="nav-item mb-2">
+              <a
+                class="nav-link text-light d-flex align-items-center"
+                href="homepage.html"
+                ><i class="bi bi-house-door-fill me-2"></i>Home</a
+              >
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-search me-2"></i>Cerca</a
+              >
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-collection me-2"></i>La tua libreria</a
+              >
+            </li>
+          </ul>
+          <!-- Azioni rapide -->
+          <ul class="nav flex-column mb-3">
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-plus-square me-2"></i>Crea playlist</a
+              >
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-heart me-2"></i>Brani che ti piacciono</a
+              >
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-bookmark me-2"></i>I tuoi episodi</a
+              >
+            </li>
+          </ul>
+          <!-- Divider -->
+          <hr class="bg-secondary my-2" />
+          <!-- Playlist (scorribile) -->
+          <div class="flex-grow-1 overflow-auto" style="min-height: 0">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >main character energy (mag-giu 2022)</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >that fucking mood 🦩</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >VEE, CARLOTTA E GIACOMO VANNO A BOSIO</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >An Emily Winchester kind of mood 👑</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >landing page (mar-apr 2022)</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">2021 lol</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Indie Italia</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Workout Hits</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Chill Vibes</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Jazz Classics</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Party Time</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Rock Legends</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Canzoni Tristi</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Happy Hour</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Travel Songs</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- HomePage -->
         <div
-          class="col col-12 col-sm-12 col-md-6 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3"
+          class="col-12 col-md-8 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-0 overflow-auto mx-auto"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          eveniet ad eaque molestiae ullam aliquid amet debitis quam error vero
-          blanditiis eum, accusamus ducimus nesciunt nihil porro voluptas quia
-          asperiores.
+          <div class="centrale-artista-cover">
+            <!-- Frecce di navigazione -->
+            <div
+              class="artist-nav-arrows d-flex align-items-center gap-2 p-3"
+              style="z-index: 3; position: absolute; top: 0; left: 0"
+            >
+              <button class="arrow-btn">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="arrow-btn">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+            <!-- Info artista -->
+            <div class="centrale-artista-info">
+              <div class="centrale-artista-badge">
+                <i class="bi bi-patch-check-fill"></i> Artista verificato
+              </div>
+              <h1 class="centrale-artista-title">Yellowcard</h1>
+              <div class="centrale-artista-listeners">
+                3.433.158 ascoltatori mensili
+              </div>
+            </div>
+            <div
+              class="artist-account-btn position-absolute top-0 end-0 p-3"
+              style="z-index: 4"
+            >
+              <div class="dropdown">
+                <button
+                  class="btn btn-dark d-flex align-items-center rounded-pill px-3 py-1 dropdown-toggle"
+                  type="button"
+                  id="dropdownAccount"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="background: rgba(0, 0, 0, 0.7); font-weight: 600"
+                >
+                  <img
+                    src="https://randomuser.me/api/portraits/women/1.jpg"
+                    alt="User"
+                    class="rounded-circle me-2"
+                    width="32"
+                    height="32"
+                  />
+                  <span
+                    style="
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      max-width: 110px;
+                      display: inline-block;
+                    "
+                    >Utente ...</span
+                  >
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark dropdown-menu-end mt-2"
+                  aria-labelledby="dropdownAccount"
+                >
+                  <li><a class="dropdown-item" href="#">Profilo</a></li>
+                  <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item text-danger" href="#">Esci</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Pulsanti -->
+          <div class="centrale-artista-buttons">
+            <button class="btn btn-success btn-lg rounded-circle me-2">
+              <i class="bi bi-play-fill"></i>
+            </button>
+            <button class="btn btn-outline-light fw-bold">FOLLOWING</button>
+            <button class="btn btn-dark">
+              <i class="bi bi-three-dots"></i>
+            </button>
+          </div>
+          <!-- Popolari e Brani che ti piacciono -->
+          <div class="row centrale-artista-main">
+            <div class="col-12 col-lg-8">
+              <h4>Popolari</h4>
+              <ol class="list-unstyled popular-tracks">
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">1</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">2</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">3</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">4</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">5</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">6</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+                <li class="d-flex align-items-center py-2">
+                  <span class="track-number text-secondary">7</span>
+                  <img
+                    src="assets/imgs/main/image-1.jpg"
+                    alt=""
+                    width="40"
+                    class="me-3 ms-3 rounded"
+                  />
+                  <span class="track-title me-auto">Ocean Avenue</span>
+                  <span class="track-plays text-secondary text-center"
+                    >276.616.912</span
+                  >
+                  <span class="track-duration text-secondary ms-4">3:18</span>
+                </li>
+
+                <!-- Altri brani... -->
+              </ol>
+              <a href="#" class="text-secondary small">VISUALIZZA ALTRO</a>
+            </div>
+            <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+              <h4>Brani che ti piacciono</h4>
+              <div class="d-flex align-items-center py-2">
+                <img
+                  src="assets/imgs/main/image-2.jpg"
+                  alt=""
+                  width="40"
+                  class="me-3 rounded"
+                />
+                <div>
+                  <div>
+                    <i class="bi bi-heart-fill text-success"></i> Hai messo Mi
+                    piace a 11 brani
+                  </div>
+                  <div class="text-secondary small">Di Yellowcard</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Sidebar di destra -->
+        <!-- Sidebar di destra (spostata fuori dal centrale) -->
         <div
-          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100"
+          class="col d-none d-lg-flex col-lg-3 bg-dark text-light border border-3 border-black vh-100"
         >
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
           doloremque amet nihil consequuntur numquam quae, neque quibusdam ipsa!

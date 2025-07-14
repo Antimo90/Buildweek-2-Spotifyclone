@@ -1,150 +1,119 @@
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Sidebar container */
+.sidebar-spotify {
+  background: #000;
+  color: #b3b3b3;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+  padding: 24px 0 12px 0;
+  min-width: 250px;
   height: 100vh;
-  width: 320px;
-  overflow-y: auto;
-  z-index: 1030;
-  background: linear-gradient(180deg, #181818 80%, #282828 100%);
-  box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.7);
-}
-.sidebar .logo-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  margin-top: 0.5rem;
+  flex-direction: column;
+  font-family: "CircularStd", "Arial", sans-serif;
+  font-size: 1.05rem;
 }
-.sidebar .nav-link {
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-  font-weight: 500;
-  padding: 0.6rem 0.9rem;
+
+/* Tre puntini dropdown */
+.sidebar-spotify .dropdown .btn {
+  color: #b3b3b3;
+  transition: color 0.2s;
+  font-size: 1.7rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
-.sidebar .nav-link:hover,
-.sidebar .nav-link:focus {
-  background: #282828;
-  color: #1db954 !important;
+.sidebar-spotify .dropdown .btn:focus {
   outline: none;
+  box-shadow: none;
 }
-.sidebar hr {
-  border-top: 1.5px solid #333;
-  margin: 1.2rem 0;
+.sidebar-spotify .dropdown .btn:hover {
+  color: #1db954;
 }
-.sidebar .playlist-list {
-  flex-grow: 1;
-  overflow-y: auto;
-  font-size: 0.97rem;
-  padding-right: 4px;
+
+/* Dropdown menu */
+.sidebar-spotify .dropdown-menu {
+  background: #282828;
+  border-radius: 8px;
+  border: none;
+  min-width: 140px;
+  font-size: 1rem;
 }
-.sidebar .playlist-list li {
-  padding: 0.3rem 0.5rem;
-  border-radius: 3px;
-  cursor: pointer;
+.sidebar-spotify .dropdown-item {
   color: #b3b3b3;
   transition: background 0.2s, color 0.2s;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  border-radius: 4px;
 }
-.sidebar .playlist-list li:hover {
-  background: #232323;
+.sidebar-spotify .dropdown-item:hover {
   color: #fff;
-}
-.main-content {
-  margin-left: 320px;
-  min-height: 100vh;
-}
-.sidebar::-webkit-scrollbar,
-.sidebar .playlist-list::-webkit-scrollbar {
-  width: 10px;
-  background: transparent;
+  background: #1db954;
 }
 
-.sidebar::-webkit-scrollbar-thumb,
-.sidebar .playlist-list::-webkit-scrollbar-thumb {
-  background: #232323;
+/* Menu principale e azioni rapide */
+.sidebar-spotify .nav-link {
+  color: #b3b3b3;
+  font-weight: 600;
   border-radius: 6px;
-  border: 2px solid #181818;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover,
-.sidebar .playlist-list::-webkit-scrollbar-thumb:hover {
-  background: #333;
-}
-
-.sidebar::-webkit-scrollbar-track,
-.sidebar .playlist-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.dropdown-menu {
-  min-width: 140px;
-  background: #232323 !important;
-  border-radius: 8px;
-  padding: 0.3rem 0;
-}
-.dropdown-item {
-  color: #b3b3b3 !important;
-  padding: 0.6rem 1.2rem;
   transition: background 0.2s, color 0.2s;
-  border-radius: 4px;
-}
-.dropdown-item:hover,
-.dropdown-item:focus {
-  background: #282828 !important;
-  color: #1db954 !important;
-}
-
-/* Tre puntini: effetto hover e attivo */
-.nav-link.dropdown-toggle {
-  transition: background 0.2s, color 0.2s;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.nav-link.dropdown-toggle:hover,
-.nav-link.dropdown-toggle:focus,
-.nav-link.dropdown-toggle[aria-expanded="true"] {
-  background: #232323;
-  color: #1db954 !important;
-}
-
-/* Effetto pressione */
-.nav-link.dropdown-toggle:active {
-  background: #181818;
-  color: #1db954 !important;
-}
-
-/* Dropdown menu: ombra più soft e separatore */
-.dropdown-menu {
-  min-width: 160px;
-  background: #232323 !important;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  padding: 0.5rem 0;
-  border: none;
-  margin-top: 8px !important;
-  margin-left: -10px;
-}
-.dropdown-menu::before {
-  content: "";
-  display: block;
-  height: 8px;
-  background: transparent;
+  padding: 10px 20px;
   margin-bottom: 2px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+}
+.sidebar-spotify .nav-link:hover,
+.sidebar-spotify .nav-link.active {
+  color: #1db954;
+  background: #181818;
+}
+.sidebar-spotify .nav-link i {
+  font-size: 1.3rem;
+  margin-right: 12px;
+  transition: color 0.2s;
+}
+.sidebar-spotify .nav-link:hover i,
+.sidebar-spotify .nav-link.active i {
+  color: #1db954;
 }
 
-/* Dropdown item: più spazio e font leggermente più grande */
-.dropdown-item {
-  color: #eaeaea !important;
-  font-size: 1.05rem;
-  padding: 0.7rem 1.5rem;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+/* Divider */
+.sidebar-spotify hr {
+  border-top: 1px solid #232323;
+  margin: 16px 0 10px 0;
 }
-.dropdown-item:hover,
-.dropdown-item:focus {
-  background: #282828 !important;
-  color: #1db954 !important;
+
+/* Playlist */
+.sidebar-spotify .nav.flex-column .nav-link.text-secondary {
+  color: #b3b3b3;
+  font-size: 1rem;
+  padding: 7px 20px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 1px;
+}
+.sidebar-spotify .nav.flex-column .nav-link.text-secondary:hover {
+  color: #fff;
+  background: #232323;
+}
+
+/* Scrollbar personalizzata */
+.sidebar-spotify .overflow-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #232323 #181818;
+}
+.sidebar-spotify .overflow-auto::-webkit-scrollbar {
+  width: 8px;
+  background: #181818;
+}
+.sidebar-spotify .overflow-auto::-webkit-scrollbar-thumb {
+  background: #232323;
+  border-radius: 4px;
+}
+
+/* Opzionale: effetto glass leggero */
+.sidebar-spotify {
+  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.92);
 }
