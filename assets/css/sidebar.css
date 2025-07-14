@@ -1,0 +1,150 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 320px;
+  overflow-y: auto;
+  z-index: 1030;
+  background: linear-gradient(180deg, #181818 80%, #282828 100%);
+  box-shadow: 2px 0 16px 0 rgba(0, 0, 0, 0.7);
+}
+.sidebar .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+.sidebar .nav-link {
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  padding: 0.6rem 0.9rem;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link:focus {
+  background: #282828;
+  color: #1db954 !important;
+  outline: none;
+}
+.sidebar hr {
+  border-top: 1.5px solid #333;
+  margin: 1.2rem 0;
+}
+.sidebar .playlist-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 0.97rem;
+  padding-right: 4px;
+}
+.sidebar .playlist-list li {
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #b3b3b3;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.sidebar .playlist-list li:hover {
+  background: #232323;
+  color: #fff;
+}
+.main-content {
+  margin-left: 320px;
+  min-height: 100vh;
+}
+.sidebar::-webkit-scrollbar,
+.sidebar .playlist-list::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.sidebar .playlist-list::-webkit-scrollbar-thumb {
+  background: #232323;
+  border-radius: 6px;
+  border: 2px solid #181818;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.sidebar .playlist-list::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.sidebar .playlist-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-menu {
+  min-width: 140px;
+  background: #232323 !important;
+  border-radius: 8px;
+  padding: 0.3rem 0;
+}
+.dropdown-item {
+  color: #b3b3b3 !important;
+  padding: 0.6rem 1.2rem;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 4px;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #282828 !important;
+  color: #1db954 !important;
+}
+
+/* Tre puntini: effetto hover e attivo */
+.nav-link.dropdown-toggle {
+  transition: background 0.2s, color 0.2s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.nav-link.dropdown-toggle:hover,
+.nav-link.dropdown-toggle:focus,
+.nav-link.dropdown-toggle[aria-expanded="true"] {
+  background: #232323;
+  color: #1db954 !important;
+}
+
+/* Effetto pressione */
+.nav-link.dropdown-toggle:active {
+  background: #181818;
+  color: #1db954 !important;
+}
+
+/* Dropdown menu: ombra più soft e separatore */
+.dropdown-menu {
+  min-width: 160px;
+  background: #232323 !important;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 0;
+  border: none;
+  margin-top: 8px !important;
+  margin-left: -10px;
+}
+.dropdown-menu::before {
+  content: "";
+  display: block;
+  height: 8px;
+  background: transparent;
+  margin-bottom: 2px;
+}
+
+/* Dropdown item: più spazio e font leggermente più grande */
+.dropdown-item {
+  color: #eaeaea !important;
+  font-size: 1.05rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #282828 !important;
+  color: #1db954 !important;
+}
