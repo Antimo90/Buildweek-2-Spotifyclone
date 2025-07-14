@@ -1,15 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Homepage</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      .album-cover {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .album-info h2 {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .album-info p,
+      .date p {
+        color: #b3b3b3;
+        font-size: 12px;
+        margin-bottom: 0.5rem;
+      }
+
+      .btn-play {
+        background-color: #006501;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .icon-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .left, .right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .track-list .track {
+        padding: 0.5rem 0;
+      }
+    </style>
   </head>
   <body class="bg-black">
     <header></header>
@@ -18,27 +74,181 @@
 
       <div class="row">
         <!-- Sidebar di sinistra -->
-        <div
-          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3"
-        >
+        <div class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium
           fugit quis a rem eum cupiditate debitis repudiandae cumque perferendis
           fugiat fuga, non, amet sunt recusandae laboriosam totam possimus cum
           soluta!
         </div>
+
         <!-- HomePage -->
-        <div
-          class="col col-12 col-sm-12 col-md-6 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3"
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          eveniet ad eaque molestiae ullam aliquid amet debitis quam error vero
-          blanditiis eum, accusamus ducimus nesciunt nihil porro voluptas quia
-          asperiores.
+        <div class="col col-12 col-sm-12 col-md-6 col-lg-6 text-light border border-3 border-black rounded-3 album-container">
+          <div class="container py-3">
+            <img src="assets/imgs/main/image-11.jpg" class="album-cover mb-3" alt="Album Cover">
+
+            <div class="album-info">
+              <h1 class="mb-4 mt-2">Mercury - Acts 1 & 2</h1>
+              <p>
+                <img src="assets/imgs/main/imagine-dragons.jpg" class="rounded-circle" style="width: 20px; height: 20px; object-fit: cover;">
+                Imagine Dragons
+              </p>
+              <p>Album • 2022</p>
+            </div>
+
+            <div class="action-buttons">
+              <div class="left">
+                <button class="icon-btn" title="Aggiungi alla libreria"><i class="bi bi-plus-circle"></i></button>
+                <button class="icon-btn" title="Download"><i class="bi bi-arrow-down-circle"></i></button>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="right">
+                <button class="icon-btn" title="Random"><i class="bi bi-shuffle"></i></button>
+                <button class="btn-play"><i class="bi bi-play-fill"></i></button>
+              </div>
+            </div>
+
+            <div class="track-list mt-3">
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Enemy (width JID) - from the series Arcane Leag...</div>
+                <div class="track-duration text-muted">Imagine Dragons, JID, Arcane, League of Legend</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">My Life</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Lonely</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Wrecked</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Monday</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">#1</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Easy Come Easy Go</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Giants</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">It's Ok</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Dull Knives</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Follow You</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">Cutthroath</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">No Time For Toxic People</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+
+              <div class="track d-flex align-items-center">
+                <div class="track-title flex-grow-1">One Day</div>
+                <div class="track-duration text-muted">Imagine Dragons</div>
+                <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+            </div>
+
+            <div class="date mt-3 mb-4">
+              <p>
+                Luglio 1, 2022
+                <br>
+                32 songs • 1h 42min</p>
+              <p>
+                <img src="assets/imgs/main/imagine-dragons.jpg" class="rounded-circle" style="width: 20px; height: 20px; object-fit: cover;">
+                Imagine Dragons
+              </p>
+            </div>
+
+            <div class="foot">
+              <h5>You might also like</h5>
+              <div class="d-flex overflow-auto py-3 px-2 gap-3">
+
+                <div class="flex-shrink-0" style="width: 200px;">
+                  <img src="assets/imgs/main/image-13.jpg" class="img-fluid rounded" alt="Album 1">
+                  <p class="mt-2">Scopa, paletta e musica!</p>
+                </div>
+
+                <div class="flex-shrink-0" style="width: 200px;">
+                  <img src="assets/imgs/main/image-16.jpg" class="img-fluid rounded" alt="Album 2">
+                  <p class="mt-2">Instrumental beats to lock-in.</p>
+                </div>
+
+                <div class="flex-shrink-0" style="width: 200px;">
+                  <img src="assets/imgs/main/image-19.jpg" class="img-fluid rounded" alt="Album 3">
+                  <p class="mt-2">Rep hits to keep your workout fresh</p>
+                </div>
+
+                <div class="flex-shrink-0" style="width: 200px;">
+                  <img src="assets/imgs/main/image-17.jpg" class="img-fluid rounded" alt="Album 4">
+                  <p class="mt-2">New songs of Mecna, Justin Bieber, BLACKPINK, Niky Savage...</p>
+                </div>
+
+                <div class="flex-shrink-0" style="width: 200px;">
+                  <img src="assets/imgs/search/image-8.jpg" class="img-fluid rounded" alt="Album 5">
+                  <p class="mt-2">Get your beast mode on!</p>
+                </div>
+
+                <div class="flex-shrink-0" style="width: 200px;">
+                  <img src="assets/imgs/main/image-5.jpg" class="img-fluid rounded" alt="Album 6">
+                  <p class="mt-2">chill beats, lofi vibes, new tracks every week..</p>
+                </div>
+              </div><br>
+
+              <div class="copy text-light">
+                &copy; &#8471; 2022 KIDinaKORNER/Interscope Records
+              </div>
+            </div>
+          </div>
         </div>
+
         <!-- Sidebar di destra -->
-        <div
-          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100"
-        >
+        <div class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
           doloremque amet nihil consequuntur numquam quae, neque quibusdam ipsa!
           Nesciunt sint delectus exercitationem nulla non impedit magni quia
@@ -47,10 +257,9 @@
       </div>
     </main>
     <footer></footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+    <script src="scripts/album.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
   </body>
 </html>
