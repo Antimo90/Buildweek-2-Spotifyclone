@@ -48,17 +48,34 @@
 .centrale-artista-buttons {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 2.2rem;
   padding: 2rem 2rem 1.2rem 2rem;
+}
+.centrale-artista-buttons .btn:not(.btn-success):not(.btn-dark) {
+  min-width: 120px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
 }
 .centrale-artista-buttons .btn-success {
   width: 56px;
   height: 56px;
+  min-width: 56px;
+  min-height: 56px;
   font-size: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
   box-shadow: 0 4px 16px rgba(30, 215, 96, 0.2);
+  padding: 0;
+}
+.centrale-artista-buttons .btn i {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
 }
 .centrale-artista-buttons .btn-outline-light {
   font-weight: bold;
@@ -242,28 +259,87 @@ img {
   font-size: 1rem;
 }
 
-/* Scrollbar moderna e scura per la colonna centrale */
+/* Miglioramento scrollbar colonna centrale */
+/* Rimane solo la personalizzazione per la colonna centrale */
 .col.bg-dark::-webkit-scrollbar,
 .centrale-artista-main::-webkit-scrollbar {
-  width: 8px;
-  background: transparent;
+  width: 10px;
+  background: #181818;
 }
 
 .col.bg-dark::-webkit-scrollbar-thumb,
 .centrale-artista-main::-webkit-scrollbar-thumb {
-  background: #232323;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #232323 60%, #1db954 100%);
+  border-radius: 12px;
   border: 2px solid #181818;
+  box-shadow: 0 2px 8px rgba(30, 215, 96, 0.15);
+  min-height: 40px;
 }
 
 .col.bg-dark::-webkit-scrollbar-thumb:hover,
 .centrale-artista-main::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: linear-gradient(135deg, #1db954 60%, #232323 100%);
+  box-shadow: 0 4px 16px rgba(30, 215, 96, 0.25);
 }
 
-/* Firefox */
-.col.bg-dark,
 .centrale-artista-main {
   scrollbar-width: thin;
-  scrollbar-color: #232323 #181818;
+  scrollbar-color: #1db954 #181818;
+}
+
+/* Scrollbar moderna e visibile SOLO per la colonna centrale scrollabile (selettore robusto) */
+.bg-dark.overflow-auto::-webkit-scrollbar {
+  width: 14px !important;
+  background: #111 !important;
+}
+.bg-dark.overflow-auto::-webkit-scrollbar-thumb {
+  background: #222 !important;
+  border-radius: 16px !important;
+  border: 2px solid #111 !important;
+  min-height: 60px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+  transition: background 0.3s, box-shadow 0.3s !important;
+}
+.bg-dark.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: #000 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+}
+.bg-dark.overflow-auto {
+  scrollbar-width: thick !important;
+  scrollbar-color: #222 #111 !important;
+}
+
+/* Rimuovo la personalizzazione da .centrale-artista-main */
+.centrale-artista-main::-webkit-scrollbar,
+.centrale-artista-main::-webkit-scrollbar-thumb,
+.centrale-artista-main::-webkit-scrollbar-thumb:hover {
+  all: unset;
+}
+.centrale-artista-main {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+/* Solo il pulsante FOLLOWING/FOLLOWED ha larghezza e padding extra */
+.centrale-artista-buttons {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding: 2rem 2rem 1.2rem 2rem;
+}
+.centrale-artista-buttons .btn-follow {
+  min-width: 120px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.centrale-artista-buttons .btn-success.btn-follow {
+  min-width: 120px;
+}
+.centrale-artista-buttons .btn-follow i {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
 }
