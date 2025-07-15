@@ -48,7 +48,7 @@ function searchSong(query) {
 // funzione che riceve array di tracce  e le mostra nel DOM
 function displayResults(tracks) {
   // Questo è il contenitore principale dove verranno mostrate le card dei risultati
-  const central = document.getElementById("central");
+  const central = document.getElementById("homepage");
 
   console.log("displayResults() chiamata con", tracks.length, "tracce");
 
@@ -57,7 +57,7 @@ function displayResults(tracks) {
   // Include un titolo e un div che fungerà da contenitore flessibile per le card
   let content = `
     <h2 class="text-center my-3">Risultati per la tua ricerca</h2>
-    <div id="results" class="d-flex flex-wrap justify-content-start gap-3">
+    <div id="results" class="d-flex flex-wrap justify-content-center gap-3">
   `;
 
   // Cicla su ogni traccia musicale contenuta nell'array 'tracks'
@@ -91,7 +91,7 @@ function displayResults(tracks) {
 
 // btn home
 // salvo il contenuto iniziale della home page
-const centralDiv = document.getElementById("central");
+const centralDiv = document.getElementById("homepage");
 const homePageContent = centralDiv.innerHTML;
 
 // aggiungo evento
