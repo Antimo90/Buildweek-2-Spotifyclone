@@ -1,0 +1,37 @@
+#research::placeholder {
+    color: grey;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+    background: var(black);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background: var(black);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track:horizontal{
+    background: var(--bg-black-900);
+}
+
+::-webkit-scrollbar-track:vertical {
+    background: var(--bg-black-900);
+}
+
+.card {
+    text-align: center;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+}

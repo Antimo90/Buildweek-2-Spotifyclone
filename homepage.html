@@ -10,7 +10,7 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body class="bg-black">
     <header>
@@ -18,7 +18,7 @@
         <div class="row align-items-center flex-wrap">
           <!-- Colonna sinistra -->
           <div
-            class="col-12 col-md-4 d-flex align-items-center gap-2 mb-2 mb-md-0"
+            class="col col-md-4 d-none d-md-flex align-items-center gap-2 mb-2 mb-md-0"
           >
             <button class="btn btn-black">
               <svg
@@ -68,9 +68,10 @@
 
           <!-- Colonna centrale -->
           <div
-            class="col-12 col-md-4 d-flex align-items-center justify-content-center mb-2 mb-md-0"
+            class="col-10 col-md-4 d-flex align-items-center justify-content-center mb-2 mb-md-0"
           >
             <button
+              id="home-btn"
               class="btn btn-dark btn-sm me-1 border border-black rounded-circle p-2"
             >
               <svg
@@ -128,7 +129,31 @@
           </div>
 
           <!-- Colonna destra -->
-          <div
+<div class="col-2 col-md-4 col-lg-4 d-flex justify-content-lg-end align-items-center gap-2">
+
+  <!-- Bottoni visibili solo su xl e oltre -->
+  <div class="d-none d-xl-flex gap-2">
+    <button class="btn btn-light btn-sm fw-bold border rounded-5 p-2">Esplora Premium</button>
+    <button class="btn btn-black"> <!-- Bell -->...</button>
+    <button class="btn btn-black"> <!-- People -->...</button>
+    <button class="avatar btn btn-black border-black rounded-circle bg-warning">A</button>
+  </div>
+
+  <!-- Dropdown visibile su sm/md/lg -->
+  <div class="dropdown d-xl-none ms-auto">
+    <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z"/>
+      </svg>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end bg-dark text-light" aria-labelledby="dropdownMenuButton">
+      <li><a class="dropdown-item text-light" href="#">Esplora Premium</a></li>
+      <li><a class="dropdown-item text-light" href="#">Notifiche</a></li>
+      <li><a class="dropdown-item text-light" href="#">Utenti</a></li>
+      <li><a class="dropdown-item text-light" href="#">Profilo</a></li>
+    </ul>
+  </div>
+</div>          <!-- <div
             class="col-12 col-md-4 d-flex justify-content-md-end align-items-center gap-2"
           >
             <button
@@ -170,7 +195,7 @@
               A
             </button>
           </div>
-        </div>
+        </div> -->
       </nav>
     </header>
 
@@ -188,14 +213,17 @@
           soluta!
         </div>
         <!-- HomePage -->
+
         <div
-          class="col col-12 col-sm-12 col-md-6 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3"
+          id="central"
+          class="col col-12 col-sm-12 col-md-6 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3 overflow-scroll"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
           eveniet ad eaque molestiae ullam aliquid amet debitis quam error vero
           blanditiis eum, accusamus ducimus nesciunt nihil porro voluptas quia
           asperiores.
         </div>
+
         <!-- Sidebar di destra -->
         <div
           class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100"
@@ -213,5 +241,6 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <script src="./scripts/navbar.js"></script>
   </body>
 </html>
