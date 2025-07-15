@@ -1,6 +1,6 @@
 /* Sidebar container */
 .sidebar-spotify {
-  background: #000;
+  background: rgba(0, 0, 0, 0.92);
   color: #b3b3b3;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
@@ -11,9 +11,9 @@
   flex-direction: column;
   font-family: "CircularStd", "Arial", sans-serif;
   font-size: 1.05rem;
+  backdrop-filter: blur(2px);
 }
 
-/* Tre puntini dropdown */
 .sidebar-spotify .dropdown .btn {
   color: #b3b3b3;
   transition: color 0.2s;
@@ -30,25 +30,36 @@
   color: #1db954;
 }
 
-/* Dropdown menu */
 .sidebar-spotify .dropdown-menu {
-  background: #282828;
-  border-radius: 8px;
+  background: #232323;
+  border-radius: 1rem;
+  min-width: 160px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  padding: 0.4rem 0;
   border: none;
-  min-width: 140px;
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 .sidebar-spotify .dropdown-item {
-  color: #b3b3b3;
-  transition: background 0.2s, color 0.2s;
-  border-radius: 4px;
-}
-.sidebar-spotify .dropdown-item:hover {
   color: #fff;
+  padding: 0.7rem 1.5rem 0.7rem 2.2rem;
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: background 0.18s, color 0.18s;
+  font-weight: 500;
+}
+.sidebar-spotify .dropdown-item:hover,
+.sidebar-spotify .dropdown-item:focus {
   background: #1db954;
+  color: #232323;
+}
+.sidebar-spotify .dropdown-item i {
+  font-size: 1.1rem;
+  margin-right: 0.7rem;
+  color: #1db954;
 }
 
-/* Menu principale e azioni rapide */
 .sidebar-spotify .nav-link {
   color: #b3b3b3;
   font-weight: 600;
@@ -75,13 +86,11 @@
   color: #1db954;
 }
 
-/* Divider */
 .sidebar-spotify hr {
   border-top: 1px solid #232323;
   margin: 16px 0 10px 0;
 }
 
-/* Playlist */
 .sidebar-spotify .nav.flex-column .nav-link.text-secondary {
   color: #b3b3b3;
   font-size: 1rem;
@@ -98,7 +107,6 @@
   background: #232323;
 }
 
-/* Scrollbar personalizzata */
 .sidebar-spotify .overflow-auto {
   scrollbar-width: thin;
   scrollbar-color: #232323 #181818;
@@ -110,10 +118,4 @@
 .sidebar-spotify .overflow-auto::-webkit-scrollbar-thumb {
   background: #232323;
   border-radius: 4px;
-}
-
-/* Opzionale: effetto glass leggero */
-.sidebar-spotify {
-  backdrop-filter: blur(2px);
-  background: rgba(0, 0, 0, 0.92);
 }

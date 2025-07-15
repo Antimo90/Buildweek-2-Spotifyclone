@@ -21,24 +21,21 @@
   <body class="bg-black">
     <header></header>
     <main class="ps-3 pe-3" style="overflow-x: hidden; overflow-y: auto">
-      <!-- Lavoro sulla sidebar di sinistra e destra e la colonna centrale per la versione Homepage -->
-
       <div class="row">
         <!-- Sidebar di sinistra -->
         <div
           class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-3 sidebar-spotify"
           style="min-width: 250px"
         >
-          <!-- Tre puntini come dropdown -->
           <div
             class="d-flex justify-content-center align-items-center mb-4"
             style="height: 32px"
           >
             <div class="dropdown">
               <button
-                class="btn btn-dark border-0 p-0"
+                class="btn btn-dark border-0 p-0 dropdown-toggle"
                 type="button"
-                id="dropdownMenuButton"
+                id="dropdownSidebarMenu"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 style="font-size: 1.5rem"
@@ -46,16 +43,33 @@
                 &#8226;&#8226;&#8226;
               </button>
               <ul
-                class="dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
+                class="dropdown-menu dropdown-menu-dark shadow rounded-4 mt-2"
+                aria-labelledby="dropdownSidebarMenu"
               >
-                <li><a class="dropdown-item" href="#">Musica</a></li>
-                <li><a class="dropdown-item" href="#">Artisti</a></li>
-                <li><a class="dropdown-item" href="#">Album</a></li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="#"
+                    ><i class="bi bi-music-note-beamed"></i>Musica</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="#"
+                    ><i class="bi bi-person-badge"></i>Artisti</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="#"
+                    ><i class="bi bi-disc"></i>Album</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
-          <!-- Menu principale -->
           <ul class="nav flex-column mb-3">
             <li class="nav-item mb-2">
               <a
@@ -66,16 +80,10 @@
             </li>
             <li class="nav-item mb-2">
               <a class="nav-link text-light d-flex align-items-center" href="#"
-                ><i class="bi bi-search me-2"></i>Cerca</a
-              >
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link text-light d-flex align-items-center" href="#"
                 ><i class="bi bi-collection me-2"></i>La tua libreria</a
               >
             </li>
           </ul>
-          <!-- Azioni rapide -->
           <ul class="nav flex-column mb-3">
             <li class="nav-item mb-2">
               <a class="nav-link text-light d-flex align-items-center" href="#"
@@ -93,9 +101,7 @@
               >
             </li>
           </ul>
-          <!-- Divider -->
           <hr class="bg-secondary my-2" />
-          <!-- Playlist (scorribile) -->
           <div class="flex-grow-1 overflow-auto" style="min-height: 0">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -170,12 +176,11 @@
             </ul>
           </div>
         </div>
-        <!-- HomePage -->
+        <!-- Colonna centrale -->
         <div
-          class="col-12 col-md-8 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-0 overflow-auto mx-auto"
+          class="col-12 col-md-8 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-0 overflow-auto mx-auto scroll-central"
         >
           <div class="centrale-artista-cover">
-            <!-- Frecce di navigazione -->
             <div
               class="artist-nav-arrows d-flex align-items-center gap-2 p-3"
               style="z-index: 3; position: absolute; top: 0; left: 0"
@@ -187,7 +192,6 @@
                 <i class="bi bi-chevron-right"></i>
               </button>
             </div>
-            <!-- Info artista -->
             <div class="centrale-artista-info">
               <div class="centrale-artista-badge">
                 <i class="bi bi-patch-check-fill"></i> Artista verificato
@@ -242,126 +246,131 @@
               </div>
             </div>
           </div>
-          <!-- Pulsanti -->
           <div class="centrale-artista-buttons">
-            <button class="btn btn-success btn-lg rounded-circle me-2">
+            <button class="btn-play me-2">
               <i class="bi bi-play-fill"></i>
             </button>
             <button
               id="follow-btn"
               class="btn btn-outline-light fw-bold btn-follow"
             >
-              FOLLOWING
+              Segui
             </button>
-            <button class="btn btn-dark">
-              <i class="bi bi-three-dots"></i>
-            </button>
+            <div class="dropdown">
+              <button
+                class="btn btn-dark dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-three-dots"></i>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-flag"></i>Segnala</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-link-45deg"></i>Condividi</a
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
-          <!-- Popolari e Brani che ti piacciono -->
           <div class="row centrale-artista-main">
             <div class="col-12 col-lg-8">
               <h4>Popolari</h4>
               <ol class="list-unstyled popular-tracks">
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">1</span>
-                  <img
+                  <span class="track-number text-secondary">1</span
+                  ><img
                     src="assets/imgs/main/image-7.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Starlight Avenue</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Starlight Avenue</span
+                  ><span class="track-plays text-secondary text-center"
                     >134.982.201</span
-                  >
-                  <span class="track-duration text-secondary ms-4">3:42</span>
+                  ><span class="track-duration text-secondary ms-4">3:42</span>
                 </li>
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">2</span>
-                  <img
+                  <span class="track-number text-secondary">2</span
+                  ><img
                     src="assets/imgs/main/image-12.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Midnight Drive</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Midnight Drive</span
+                  ><span class="track-plays text-secondary text-center"
                     >276.616.912</span
-                  >
-                  <span class="track-duration text-secondary ms-4">4:11</span>
+                  ><span class="track-duration text-secondary ms-4">4:11</span>
                 </li>
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">3</span>
-                  <img
+                  <span class="track-number text-secondary">3</span
+                  ><img
                     src="assets/imgs/main/image-3.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Golden Skies</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Golden Skies</span
+                  ><span class="track-plays text-secondary text-center"
                     >89.123.456</span
-                  >
-                  <span class="track-duration text-secondary ms-4">2:58</span>
+                  ><span class="track-duration text-secondary ms-4">2:58</span>
                 </li>
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">4</span>
-                  <img
+                  <span class="track-number text-secondary">4</span
+                  ><img
                     src="assets/imgs/main/image-16.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Neon Dreams</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Neon Dreams</span
+                  ><span class="track-plays text-secondary text-center"
                     >401.777.888</span
-                  >
-                  <span class="track-duration text-secondary ms-4">4:27</span>
+                  ><span class="track-duration text-secondary ms-4">4:27</span>
                 </li>
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">5</span>
-                  <img
+                  <span class="track-number text-secondary">5</span
+                  ><img
                     src="assets/imgs/main/image-10.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Echoes of You</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Echoes of You</span
+                  ><span class="track-plays text-secondary text-center"
                     >212.345.678</span
-                  >
-                  <span class="track-duration text-secondary ms-4">3:05</span>
+                  ><span class="track-duration text-secondary ms-4">3:05</span>
                 </li>
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">6</span>
-                  <img
+                  <span class="track-number text-secondary">6</span
+                  ><img
                     src="assets/imgs/main/image-18.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Sunset Boulevard</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Sunset Boulevard</span
+                  ><span class="track-plays text-secondary text-center"
                     >321.654.987</span
-                  >
-                  <span class="track-duration text-secondary ms-4">2:44</span>
+                  ><span class="track-duration text-secondary ms-4">2:44</span>
                 </li>
                 <li class="d-flex align-items-center py-2">
-                  <span class="track-number text-secondary">7</span>
-                  <img
+                  <span class="track-number text-secondary">7</span
+                  ><img
                     src="assets/imgs/main/image-14.jpg"
                     alt=""
                     width="40"
                     class="me-3 ms-3 rounded"
-                  />
-                  <span class="track-title me-auto">Electric Heart</span>
-                  <span class="track-plays text-secondary text-center"
+                  /><span class="track-title me-auto">Electric Heart</span
+                  ><span class="track-plays text-secondary text-center"
                     >178.900.321</span
-                  >
-                  <span class="track-duration text-secondary ms-4">3:59</span>
+                  ><span class="track-duration text-secondary ms-4">3:59</span>
                 </li>
-
-                <!-- Altri brani... -->
               </ol>
               <a href="#" class="text-secondary small">VISUALIZZA ALTRO</a>
             </div>
@@ -385,7 +394,7 @@
             </div>
           </div>
         </div>
-        <!-- Sidebar di destra (spostata fuori dal centrale) -->
+        <!-- Sidebar di destra -->
         <div
           class="col d-none d-lg-flex col-lg-3 bg-dark text-light border border-3 border-black vh-100"
         >
@@ -402,5 +411,6 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <script src="./scripts/artist.js"></script>
   </body>
 </html>
