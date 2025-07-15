@@ -1,0 +1,96 @@
+/* ----- .HEADER SCROLL ----- */
+.header {
+  width: 97%;
+  top: 0;
+  left: 6px;
+  height: 50px;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 15px;
+  position: fixed;
+  z-index: 1000;
+}
+
+.scrolled {
+  background: linear-gradient(to top, black 1%, rgb(155, 34, 38));
+}
+
+/* ----- ALBUM COVER ----- */
+.album-cover-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.album-cover {
+  width: 200px;
+  transition: transform 0.1s linear;
+  transform-origin: center top;
+}
+
+.album-info h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.album-info p,
+.date p {
+  color: #b3b3b3;
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+}
+
+/* ----- BUTTONS ----- */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* ----- PLAY BUTTON ----- */
+.btn-play {
+  background-color: #006501;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sticky-under-header {
+  position: fixed;
+  top: calc(0px + 25px);
+  right: 20px;
+  z-index: 1100;
+}
+
+/* ----- TRACKS ----- */
+.mobile .track, .mobile .copy {
+  padding: 0.5rem 0;
+  font-size: 0.70rem;
+}
+
+/* ----- TABLE ----- */
+td{
+  padding: 10px 0;
+}
