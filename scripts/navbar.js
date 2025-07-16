@@ -7,12 +7,23 @@ document.getElementById("research").addEventListener("input", function (e) {
   console.log("input digitato:", query);
   // mostra la ricerca
 
+  // se la barra di ricerca è vuota ricarico la home
+  if (query.length === 0) {
+    console.log("ritorno alla home");
+    showHomePage();
+  }
+
+  // se la barra di ricerca ha almeno 3 caratteri inizio la ricerca
   if (query.length > 2) {
     console.log("inizio ricerca per:", query);
     // mostra se la ricerca è partita
     searchSong(query);
   }
 });
+
+function showHomePage() {
+  centralDiv.innerHTML = homePageContent;
+}
 
 function searchSong(query) {
   // effettuo chiamata APi
