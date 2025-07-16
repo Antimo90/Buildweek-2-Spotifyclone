@@ -3,30 +3,132 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Homepage</title>
+    <title>Album</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="assets/css/sidebar.css" />
   </head>
   <body class="bg-black">
     <header></header>
     <main class="ps-3 pe-3" style="overflow: hidden">
-      <!-- Lavoro sulla sidebar di sinistra e destra e la colonna centrale per la versione Homepage -->
-
       <div class="row">
         <!-- Sidebar di sinistra -->
         <div
-          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3"
+          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3 flex-column p-3 sidebar-spotify"
+          style="min-width: 250px"
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium
-          fugit quis a rem eum cupiditate debitis repudiandae cumque perferendis
-          fugiat fuga, non, amet sunt recusandae laboriosam totam possimus cum
-          soluta!
+          <div
+            class="d-flex justify-content-center align-items-center mb-4"
+            style="height: 32px"
+          ></div>
+          <ul class="nav flex-column mb-3">
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-collection me-2"></i>La tua libreria</a
+              >
+            </li>
+          </ul>
+          <ul class="nav flex-column mb-3">
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-plus-square me-2"></i>Crea playlist</a
+              >
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-heart me-2"></i>Brani che ti piacciono</a
+              >
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#"
+                ><i class="bi bi-bookmark me-2"></i>I tuoi episodi</a
+              >
+            </li>
+          </ul>
+          <hr class="bg-secondary my-2" />
+          <div class="flex-grow-1 overflow-auto" style="min-height: 0">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >main character energy (mag-giu 2022)</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >that fucking mood 🦩</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >VEE, CARLOTTA E GIACOMO VANNO A BOSIO</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >An Emily Winchester kind of mood 👑</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >landing page (mar-apr 2022)</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">2021 lol</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Indie Italia</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Workout Hits</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Chill Vibes</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Jazz Classics</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Party Time</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Rock Legends</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Canzoni Tristi</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Happy Hour</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#"
+                  >Travel Songs</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <!-- HomePage -->
+        <!-- Colonna centrale -->
         <div
           class="col col-12 col-sm-12 col-md-6 col-lg-6 bg-dark text-light border border-3 border-black vh-100 rounded-3"
         >
@@ -37,7 +139,7 @@
         </div>
         <!-- Sidebar di destra -->
         <div
-          class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100"
+          class="col d-none d-lg-flex col-lg-3 bg-dark text-light border border-3 border-black vh-100"
         >
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
           doloremque amet nihil consequuntur numquam quae, neque quibusdam ipsa!
@@ -52,5 +154,6 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <script src="./scripts/album.js"></script>
   </body>
 </html>
