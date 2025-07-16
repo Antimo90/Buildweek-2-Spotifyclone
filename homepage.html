@@ -15,7 +15,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <link rel="stylesheet" href="./assets/css/style copy.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body class="bg-black">
     <header>
@@ -134,35 +134,68 @@
           </div>
 
           <!-- Colonna destra -->
-           <div class="col-2 col-md-4 col-lg-4 d-flex justify-content-lg-end align-items-center gap-2">
-
-  <!-- Bottoni visibili solo su xl e oltre -->
-  <div class="d-none d-xl-flex gap-2">
-    <button class="btn btn-light btn-sm fw-bold border rounded-5 p-2">Esplora Premium</button>
-    <button class="btn btn-black"> <!-- Bell -->...</button>
-    <button class="btn btn-black"> <!-- People -->...</button>
-    <button class="avatar btn btn-black border-black rounded-circle bg-warning">A</button>
-  </div>
-
-  <!-- Dropdown visibile su sm/md/lg -->
-  <div class="dropdown d-xl-none ms-auto">
-    <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z"/>
-      </svg>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end bg-dark text-light" aria-labelledby="dropdownMenuButton">
-      <li><a class="dropdown-item text-light" href="#">Esplora Premium</a></li>
-      <li><a class="dropdown-item text-light" href="#">Notifiche</a></li>
-      <li><a class="dropdown-item text-light" href="#">Utenti</a></li>
-      <li><a class="dropdown-item text-light" href="#">Profilo</a></li>
-       </ul>
-      </div>
-         </div>        
+          <div
+            class="col-2 col-md-4 col-lg-4 d-flex justify-content-lg-end align-items-center gap-2"
+          >
+            <!-- Bottoni visibili solo su xl e oltre -->
+            <div class="d-none d-xl-flex gap-2">
+              <button class="btn btn-light btn-sm fw-bold border rounded-5 p-2">
+                Esplora Premium
+              </button>
+              <button class="btn btn-black"><!-- Bell -->...</button>
+              <button class="btn btn-black"><!-- People -->...</button>
+              <button
+                class="avatar btn btn-black border-black rounded-circle bg-warning"
+              >
+                A
+              </button>
+            </div>
+            <!-- Dropdown visibile su sm/md/lg -->
+            <div class="dropdown d-xl-none ms-auto">
+              <button
+                class="btn btn-black dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="white"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z"
+                  />
+                </svg>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end bg-dark text-light"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item text-light" href="#"
+                    >Esplora Premium</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item text-light" href="#">Notifiche</a>
+                </li>
+                <li><a class="dropdown-item text-light" href="#">Utenti</a></li>
+                <li>
+                  <a class="dropdown-item text-light" href="#">Profilo</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
 
-    <header></header>
     <main class="ps-3 pe-3" style="overflow: hidden">
       <!-- Lavoro sulla sidebar di sinistra e destra e la colonna centrale per la versione Homepage -->
 
@@ -213,119 +246,114 @@
           class="col col-12 col-md-6 col-lg-6 bg-dark text-light border border-3 border-black rounded-3 p-4"
           id="homepage"
         >
-          <section class="d-flex justify-content-between">
-            <div class="d-flex gap-2 mb-4">
+          <section
+            class="d-flex flex-column flex-lg-row justify-content-between"
+            id="section-welcome"
+          >
+            <div class="d-flex gap-2 mb-4" id="box-filter">
               <button class="btn-filter">Tutto</button>
               <button class="btn-filter">Musica</button>
               <button class="btn-filter">Podcast</button>
             </div>
-            <div>
-              <h2>Benvenuto</h2>
+            <div class="welcome text-center">
+              <h2 class="fs-3">Benvenuto</h2>
             </div>
           </section>
 
           <section id="album-list">
-            <div class="row g-3">
+            <div class="row g-3" id="firstRow">
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
               </div>
               <div class="col col-6 col-md-6 col-lg-3">
                 <div
-                  class="d-flex align-items-center w-100 rounded-5"
-                  id="album-music"
+                  class="d-flex align-items-center w-100 rounded-5 album-music"
                 >
                   <img
                     src="./assets/imgs/main/image-1.jpg"
                     alt="immagine-copertina"
-                    class="img-fluid w-50"
+                    class="img-fluid w-50 rounded-5"
                   />
                   <h4 class="fs-6 ms-2">Album</h4>
                 </div>
@@ -516,14 +544,11 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div></div>
-    </footer>
+    <footer></footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
-    <script src="./scripts/navbar.js"></script>
   </body>
 </html>
