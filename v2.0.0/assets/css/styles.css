@@ -28,6 +28,10 @@ body {
   padding: 1em;
 }
 
+.form-control:focus {
+  box-shadow: none;
+}
+
 /* ==================== HOMEPAGE ==================== */
 .homepage .btn-filter {
   border: none;

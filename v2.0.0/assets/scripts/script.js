@@ -1,4 +1,5 @@
-/* ============================== SEARCH ============================== */
+// aggiungo un eventlistner alla barra di ricerca
+
 document.getElementById("research").addEventListener("input", function (e) {
   // rimuovo spazi iniziali e finali dal testo digitato
   const query = e.target.value.trim();
@@ -58,7 +59,7 @@ function searchSong(query) {
 // funzione che riceve array di tracce  e le mostra nel DOM
 function displayResults(tracks) {
   // Questo è il contenitore principale dove verranno mostrate le card dei risultati
-  const central = document.getElementsByClassName("homepage")[0];
+  const central = document.getElementsByClassName("column")[1];
 
   console.log("displayResults() chiamata con", tracks.length, "tracce");
 
@@ -98,6 +99,18 @@ function displayResults(tracks) {
 
   console.log("Completato");
 }
+
+// btn home
+// salvo il contenuto iniziale della home page
+const centralDiv = document.getElementsByClassName("column")[1];
+const homePageContent = centralDiv.innerHTML;
+
+// aggiungo evento
+document.getElementById("home-btn").addEventListener("click", function () {
+  // ripristino home page originale
+  centralDiv.innerHTML = homePageContent;
+});
+
 
 /* ============================== SWITCH PAGES ============================== */
 const showData = function (buttonNumber) {
@@ -148,10 +161,10 @@ scrollContainer.addEventListener('scroll', function() {
   });
 
   playButtons.forEach(playButton => {
-    const header = playButton.closest('.album-container').querySelector('.header');
+    const header = playButton.closest('.album-container').querySelectorAll('.header');
     if (!header) return;
 
-    const headerBottom = header.getBoundingClientRect().bottom;
+    const headerBottom = header.getBoundingClientRect().top;
     const playButtonTop = playButton.getBoundingClientRect().top;
 
     if (headerBottom >= playButtonTop) {
@@ -169,3 +182,5 @@ scrollContainer.addEventListener('scroll', function() {
     albumCover.style.transform = `scale(${scale})`;
   });
 });
+
+/* Album */
