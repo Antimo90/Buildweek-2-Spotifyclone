@@ -21,12 +21,22 @@ function renderPopularTracks() {
     `;
     list.appendChild(li);
   });
-  // Nascondi il bottone se tutte le tracce sono mostrate
+  // Nascondi o mostra i bottoni in base a quante tracce sono mostrate
   const showMoreBtn = document.getElementById("show-more-tracks");
-  if (tracksShown >= allTracks.length) {
-    showMoreBtn.style.display = "none";
-  } else {
-    showMoreBtn.style.display = "inline";
+  const showLessBtn = document.getElementById("show-less-tracks");
+  if (showMoreBtn) {
+    if (tracksShown >= allTracks.length) {
+      showMoreBtn.style.display = "none";
+    } else {
+      showMoreBtn.style.display = "inline";
+    }
+  }
+  if (showLessBtn) {
+    if (tracksShown > 5) {
+      showLessBtn.style.display = "inline";
+    } else {
+      showLessBtn.style.display = "none";
+    }
   }
 }
 
@@ -43,6 +53,7 @@ function showPopularTracks() {
 
       // Aggiungi il listener ogni volta che mostri la lista
       const showMoreBtn = document.getElementById("show-more-tracks");
+      const showLessBtn = document.getElementById("show-less-tracks");
       if (showMoreBtn) {
         // Rimuovi eventuali listener precedenti
         showMoreBtn.replaceWith(showMoreBtn.cloneNode(true));
@@ -50,6 +61,16 @@ function showPopularTracks() {
         newBtn.addEventListener("click", function (e) {
           e.preventDefault();
           tracksShown += 5;
+          renderPopularTracks();
+        });
+      }
+      if (showLessBtn) {
+        showLessBtn.replaceWith(showLessBtn.cloneNode(true));
+        const newLessBtn = document.getElementById("show-less-tracks");
+        newLessBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          tracksShown -= 5;
+          if (tracksShown < 5) tracksShown = 5;
           renderPopularTracks();
         });
       }
