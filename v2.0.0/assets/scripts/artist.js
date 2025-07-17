@@ -1,3 +1,68 @@
+let allTracks = [];
+let tracksShown = 5;
+
+function renderPopularTracks() {
+  const list = document.getElementById("popular-tracks");
+  if (!list) return;
+  list.innerHTML = "";
+  allTracks.slice(0, tracksShown).forEach((track, index) => {
+    const li = document.createElement("li");
+    li.className = "d-flex align-items-center py-2";
+    li.innerHTML = `
+      <span class="track-number text-secondary">${index + 1}</span>
+      <img src="${
+        track.album.cover_small
+      }" alt="" width="40" class="me-3 ms-3 rounded">
+      <span class="track-title me-auto">${track.title}</span>
+      <span class="track-plays text-secondary text-center">${track.rank.toLocaleString()}</span>
+      <span class="track-duration text-secondary ms-4">${formatDuration(
+        track.duration
+      )}</span>
+    `;
+    list.appendChild(li);
+  });
+  // Nascondi il bottone se tutte le tracce sono mostrate
+  const showMoreBtn = document.getElementById("show-more-tracks");
+  if (tracksShown >= allTracks.length) {
+    showMoreBtn.style.display = "none";
+  } else {
+    showMoreBtn.style.display = "inline";
+  }
+}
+
+function showPopularTracks() {
+  const artistId = 416239;
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/top?limit=10`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      allTracks = data.data;
+      tracksShown = 5; // <-- questa riga resetta sempre a 5
+      renderPopularTracks();
+
+      // Aggiungi il listener ogni volta che mostri la lista
+      const showMoreBtn = document.getElementById("show-more-tracks");
+      if (showMoreBtn) {
+        // Rimuovi eventuali listener precedenti
+        showMoreBtn.replaceWith(showMoreBtn.cloneNode(true));
+        const newBtn = document.getElementById("show-more-tracks");
+        newBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          tracksShown += 5;
+          renderPopularTracks();
+        });
+      }
+    });
+}
+
+function formatDuration(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  return `${min}:${sec.toString().padStart(2, "0")}`;
+}
+
+// Eventuale codice per il follow-btn e altri listener
 document.addEventListener("DOMContentLoaded", function () {
   const followBtn = document.getElementById("follow-btn");
   if (followBtn) {
@@ -11,165 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.remove("btn-success", "text-white");
         this.classList.add("btn-outline-light");
       }
-    });
-  }
-
-  // Funzionalità Visualizza Altro
-  const visualizzaAltro = document.querySelector(".centrale-artista-main a");
-  const popularTracks = document.querySelector(".popular-tracks");
-  if (visualizzaAltro && popularTracks) {
-    const originalList = popularTracks.innerHTML;
-    const altSongs = [
-      {
-        title: "Back to You",
-        plays: "98.123.456",
-        duration: "3:21",
-        img: "assets/imgs/main/image-4.jpg",
-      },
-      {
-        title: "Neon Lights",
-        plays: "201.456.789",
-        duration: "4:02",
-        img: "assets/imgs/main/image-5.jpg",
-      },
-      {
-        title: "Lost in the City",
-        plays: "156.789.321",
-        duration: "2:58",
-        img: "assets/imgs/main/image-6.jpg",
-      },
-      {
-        title: "Midnight Sun",
-        plays: "77.654.321",
-        duration: "3:44",
-        img: "assets/imgs/main/image-7.jpg",
-      },
-      {
-        title: "Electric Dreams",
-        plays: "134.567.890",
-        duration: "3:11",
-        img: "assets/imgs/main/image-8.jpg",
-      },
-      {
-        title: "Golden Hour",
-        plays: "222.333.444",
-        duration: "4:09",
-        img: "assets/imgs/main/image-9.jpg",
-      },
-      {
-        title: "Skyline",
-        plays: "88.999.111",
-        duration: "2:47",
-        img: "assets/imgs/main/image-10.jpg",
-      },
-    ];
-    let showingAlt = false;
-    visualizzaAltro.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (!showingAlt) {
-        let html = "";
-        altSongs.forEach((song, i) => {
-          html += `<li class="d-flex align-items-center py-2">
-            <span class="track-number text-secondary">${i + 1}</span>
-            <img src="${
-              song.img
-            }" alt="" width="40" class="me-3 ms-3 rounded" />
-            <span class="track-title me-auto">${song.title}</span>
-            <span class="track-plays text-secondary text-center">${
-              song.plays
-            }</span>
-            <span class="track-duration text-secondary ms-4">${
-              song.duration
-            }</span>
-          </li>`;
-        });
-        popularTracks.innerHTML = html;
-        this.textContent = "Visualizza Meno";
-        showingAlt = true;
-      } else {
-        popularTracks.innerHTML = originalList;
-        this.textContent = "Visualizza Altro";
-        showingAlt = false;
-      }
-    });
-  }
-
-  // Handler per le frecce cambio artista
-  const leftArrow = document.querySelector(
-    ".artist-nav-arrows .bi-chevron-left"
-  );
-  const rightArrow = document.querySelector(
-    ".artist-nav-arrows .bi-chevron-right"
-  );
-
-  function cambiaArtista(artistaData) {
-    document.querySelector(".centrale-artista-title").textContent =
-      artistaData.nome;
-    document.querySelector(".centrale-artista-listeners").textContent =
-      artistaData.ascoltatori + " ascoltatori mensili";
-    document.querySelector(
-      ".centrale-artista-cover"
-    ).style.backgroundImage = `url('${artistaData.copertina}')`;
-    const popularTracks = document.querySelector(".popular-tracks");
-    if (popularTracks && artistaData.canzoni) {
-      let html = "";
-      artistaData.canzoni.forEach((song, i) => {
-        html += `<li class="d-flex align-items-center py-2">
-          <span class="track-number text-secondary">${i + 1}</span>
-          <img src="${song.img}" alt="" width="40" class="me-3 ms-3 rounded" />
-          <span class="track-title me-auto">${song.title}</span>
-          <span class="track-plays text-secondary text-center">${
-            song.plays
-          }</span>
-          <span class="track-duration text-secondary ms-4">${
-            song.duration
-          }</span>
-        </li>`;
-      });
-      popularTracks.innerHTML = html;
-    }
-  }
-
-  function caricaArtistaDaAPI(direzione) {
-    const mockArtista = {
-      nome: direzione === "next" ? "Imagine Dragons" : "Coldplay",
-      ascoltatori: direzione === "next" ? "5.123.456" : "4.987.654",
-      copertina:
-        direzione === "next"
-          ? "assets/imgs/main/image-12.jpg"
-          : "assets/imgs/main/image-13.jpg",
-      canzoni: [
-        {
-          title: "Believer",
-          plays: "999.999.999",
-          duration: "3:24",
-          img: "assets/imgs/main/image-14.jpg",
-        },
-        {
-          title: "Thunder",
-          plays: "888.888.888",
-          duration: "3:07",
-          img: "assets/imgs/main/image-15.jpg",
-        },
-        {
-          title: "Demons",
-          plays: "777.777.777",
-          duration: "2:57",
-          img: "assets/imgs/main/image-16.jpg",
-        },
-      ],
-    };
-    cambiaArtista(mockArtista);
-  }
-
-  if (leftArrow) {
-    leftArrow.parentElement.addEventListener("click", function () {
-      caricaArtistaDaAPI("prev");
-    });
-  }
-  if (rightArrow) {
-    rightArrow.parentElement.addEventListener("click", function () {
-      caricaArtistaDaAPI("next");
     });
   }
 });
