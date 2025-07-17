@@ -24,10 +24,59 @@
   <body class="bg-black">
     <header>
       <nav class="container-fluid bg-black p-2">
-        <div class="row align-items-center flex-wrap">
+        <div class="row align-items-center g-0 flex-nowrap">
+          <!-- colonna di sinistra -->
+
+          <div class="col-md-4 d-none d-md-flex align-items-center">
+            <button class="btn btn-black text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-three-dots"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"
+                />
+              </svg>
+            </button>
+
+            <button class="btn btn-black text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223"
+                />
+              </svg>
+            </button>
+            <button class="btn btn-black text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671"
+                />
+              </svg>
+            </button>
+          </div>
           <!-- Colonna centrale -->
           <div
-            class="col-6 col-md-8 d-flex align-items-center justify-content-center mb-2 mb-md-0"
+            class="col-10 col-md-4 d-flex align-items-center justify-content-center"
           >
             <button
               id="home-btn"
@@ -89,7 +138,7 @@
 
           <!-- Colonna destra -->
           <div
-            class="col-6 col-md-4 d-flex justify-content-end align-items-center gap-2"
+            class="col-2 col-md-4 d-flex align-items-center justify-content-end gap-2"
           >
             <!-- Bottoni visibili solo su xl e oltre -->
             <div class="d-none d-lg-flex gap-2">

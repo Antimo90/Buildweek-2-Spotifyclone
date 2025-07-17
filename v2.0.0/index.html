@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/imgs/favicon.png">
+    <title>Spotify - Lettore web: musica per tutti</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/circular-font.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body class="bg-black">
+    <header>
+      <nav class="container-fluid bg-black p-2">
+        <div class="row align-items-center flex-wrap">
+          <!-- Colonna centrale -->
+          <div class="col-6 col-md-8 d-flex align-items-center justify-content-center mb-2 mb-md-0">
+            <button id="home-btn" onclick="showData(1)" class="btn btn-dark btn-sm me-1 border border-black rounded-circle p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5">
+              </svg>
+            </button>
+
+            <div class="input-group" style="max-width: 300px">
+              <span class="input-group-text bg-dark border-dark text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                </svg>
+              </span>
+
+              <input type="text" class="form-control search-bar text-light bg-dark border-dark" placeholder="Cosa vuoi ascoltare?" id="research">
+
+              <span class="input-group-text bg-dark border-dark text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                  <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5">
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Colonna destra -->
+          <div class="col-6 col-md-4 d-flex justify-content-end align-items-center gap-2">
+            <!-- Bottoni visibili solo su xl e oltre -->
+            <div class="d-none d-lg-flex gap-2">
+              <button class="btn btn-light btn-sm fw-bold border rounded-5 p-2">Esplora Premium</button>
+
+              <button class="btn btn-black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell text-light" viewBox="0 0 16 16">
+                  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6">
+                </svg>
+              </button>
+
+              <button class="btn btn-black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people text-light" viewBox="0 0 16 16">
+                  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4">
+                </svg>
+              </button>
+
+              <div class="dropdown">
+                <button class="btn btn-dark d-flex align-items-center border-0" type="button" id="dropdownAccount" data-bs-toggle="dropdown" aria-expanded="false" style="background: rgba(0, 0, 0, 0.7); font-weight: 600">
+                  <img src="assets/imgs/user.png" class="w-50">
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end mt-2" aria-labelledby="dropdownAccount">
+                  <li><a class="dropdown-item" href="#">Profilo</a></li>
+                  <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-danger" href="#">Esci</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Dropdown visibile su sm/md/lg -->
+            <div class="dropdown d-xl-none ms-auto">
+              <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z">
+                </svg>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end bg-dark text-light" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item text-light" href="#">Esplora Premium</a></li>
+
+                <li><a class="dropdown-item text-light" href="#">Notifiche</a></li>
+
+                <li><a class="dropdown-item text-light" href="#">Utenti</a></li>
+
+                <li><a class="dropdown-item text-light" href="#">Profilo</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="ps-1 pe-1">
+      <div class="row">
+        <!-- Leftbar -->
+        <div class="col d-none d-md-flex col-md-3 col-lg-3 column text-light border border-3 border-black rounded-3 p-3 leftbar">
+          <div class="d-flex justify-content-center align-items-center mb-4" style="height: 32px"></div>
+            <ul class="nav flex-column mb-3">
+              <li class="nav-item mb-2">
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                  <i class="bi bi-collection me-2"></i>La tua libreria
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav flex-column mb-3">
+              <li class="nav-item mb-2">
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                  <i class="bi bi-plus-square me-2"></i>Crea playlist
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#">
+                <i class="bi bi-heart me-2"></i>Brani che ti piacciono
+              </a>
+            </li>
+
+            <li class="nav-item mb-2">
+              <a class="nav-link text-light d-flex align-items-center" href="#">
+                <i class="bi bi-bookmark me-2"></i>I tuoi episodi
+              </a>
+            </li>
+          </ul>
+
+          <hr class="bg-secondary my-2">
+
+          <div class="flex-grow-1 overflow-auto" style="min-height: 0">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">main character energy (mag-giu 2022)</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">that fucking mood 🦩</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">VEE, CARLOTTA E GIACOMO VANNO A BOSIO</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">An Emily Winchester kind of mood 👑</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">landing page (mar-apr 2022)</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">2021 lol</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Indie Italia</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Workout Hits</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Chill Vibes</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Jazz Classics</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Party Time</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Rock Legends</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Canzoni Tristi</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Happy Hour</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-secondary small" href="#">Travel Songs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Centralbar -->
+        <div class="col col-12 col-md-6 col-lg-6 column text-light border border-3 border-black rounded-3 p-0 scroll-container">
+          <!-- Homepage -->
+          <div class="data homepage m-3" id="data1">
+            <section class="d-flex flex-column flex-lg-row justify-content-between" id="section-welcome">
+              <div class="d-flex gap-2 mb-4 py-3" id="box-filter">
+                <button class="btn-filter bg-light text-black">Tutto</button>
+                <button class="btn-filter">Musica</button>
+                <button class="btn-filter">Podcast</button>
+              </div>
+            </section>
+
+            <section id="album-list">
+              <div class="row g-3">
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-1.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Parental advisory</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3" onclick="showData(2)">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-11.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Mercury - Acts 1 & 2</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-5.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">lofi beat</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-9.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Sotto la doccia</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-15.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Casa dolce casa</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-18.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Estate 2022</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-19.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Street culto</h4>
+                  </div>
+                </div>
+
+                <div class="col col-6 col-md-6 col-lg-3">
+                  <div class="d-flex align-items-center w-100 rounded-2 album-music">
+                    <img src="./assets/imgs/main/image-7.jpg" alt="immagine-copertina" class="img-fluid w-25">
+                    <h4 class="fs-6 ms-2">Coffee and</h4>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="mt-5">
+              <div class="row"> <!-- Create per te-->
+                <h4>Create per te</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-1.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Parental advisory</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-2.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">pov: la tua estate è un film</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-3.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Massima concentrazione</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-4.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Peaceful piano</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/search/image-5.jpg" class="img-fluid rounded w-50" alt="Album 5">
+                    <p class="mt-2">Viva latino</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-6.jpg" class="img-fluid rounded w-50" alt="Album 6">
+                    <p class="mt-2">Jazz vibes</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5"><!-- Ascoltate di recente -->
+                <h4>Ascoltate di recente</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-7.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Caffè del buongiorno</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-8.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">Sanguegiovane</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-9.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Canta sotto la doccia</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-10.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Operazione buongiorno</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/search/image-11.jpg" class="img-fluid rounded w-50" alt="Album 5">
+                    <p class="mt-2">Song to sing in the car</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-12.jpg" class="img-fluid rounded w-50" alt="Album 6">
+                    <p class="mt-2">.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5"><!-- Album con brani che ti piacciono -->
+                <h4>Album con brani che ti piacciono</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-13.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Pulizie di casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-14.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">Allenamento a casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-15.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Casa dolce casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-16.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Lavorare da casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/search/image-17.jpg" class="img-fluid rounded w-50" alt="Album 5">
+                    <p class="mt-2">Street relief</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-18.jpg" class="img-fluid rounded w-50" alt="Album 6">
+                    <p class="mt-2">Estate 2022</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5"><!-- Nuove uscite -->
+                <h4>Nuove uscite</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0" onclick="showData(2)">
+                    <img src="assets/imgs/main/image-11.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Mercury - Acts 1 & 2</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-4.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">Peaceful piano</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-19.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Street culto</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-8.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Sanguegiovane</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Albumpage -->
+          <div class="data album-container" id="data2">
+            <div class="row mobile py-3 d-md-none">
+              <div class="header d-none">
+                Mercury - Acts 1 & 2
+              </div>
+        
+              <div class="album-cover-wrapper text-center mb-3">
+                <img src="assets/imgs/main/image-11.jpg" class="album-cover rounded-3 shadow" alt="Album Cover">
+              </div>
+
+              <div class="album-info">
+                <h1 class="mb-4 mt-2">Mercury - Acts 1 & 2</h1>
+                <p onclick="showData(3)" style="cursor: pointer;">
+                  <img src="assets/imgs/main/imagine-dragons.jpg" class="rounded-circle" style="width: 20px; height: 20px; object-fit: cover;">
+                  Imagine Dragons
+                </p>
+                <p>Album • 2022</p>
+              </div>
+
+              <div class="action-buttons">
+                <div class="left">
+                  <button class="icon-btn" title="Aggiungi alla libreria"><i class="bi bi-plus-circle"></i></button>
+                  <button class="icon-btn" title="Download"><i class="bi bi-arrow-down-circle"></i></button>
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="right">
+                  <button class="icon-btn" title="Random"><i class="bi bi-shuffle"></i></button>
+                  <button class="btn-play"><i class="bi bi-play-fill"></i></button>
+                </div>
+              </div>
+
+              <div class="track-list mt-3">
+                <div class="track d-flex justify-content-between align-items-start fs-7">
+                  <div>
+                    <div class="track-title">Enemy (with JID) - from the series Arcane Leag...</div>
+                    <div class="track-artist text-muted">Imagine Dragons, JID, Arcane, League of Legends</div>
+                  </div>
+
+                  <button class="icon-btn ms-2" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">My Life</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Lonely</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Wrecked</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Monday</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">#1</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Easy Come Easy Go</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Giants</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">It's Ok</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Dull Knives</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Follow You</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">Cutthroath</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">No Time For Toxic People</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+
+                <div class="track d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="track-title flex-grow-1">One Day</div>
+                    <div class="track-artist text-muted">Imagine Dragons</div>
+                  </div>
+
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+              </div>
+
+              <div class="date mt-3 mb-4">
+                <p>
+                  Luglio 1, 2022
+                  <br>
+                  32 songs • 1h 42min</p>
+                <p onclick="showData(3)">
+                  <img src="assets/imgs/main/imagine-dragons.jpg" class="rounded-circle" style="width: 20px; height: 20px; object-fit: cover;">
+                  Imagine Dragons
+                </p>
+              </div>
+
+              <div class="foot">
+                <h5>You might also like</h5>
+                <div class="d-flex overflow-auto py-3 px-2 gap-3">
+                  <div class="flex-shrink-0" style="width: 200px;">
+                    <img src="assets/imgs/main/image-13.jpg" class="img-fluid rounded" alt="Album 1">
+                    <p class="mt-2">Scopa, paletta e musica!</p>
+                  </div>
+
+                  <div class="flex-shrink-0" style="width: 200px;">
+                    <img src="assets/imgs/main/image-16.jpg" class="img-fluid rounded" alt="Album 2">
+                    <p class="mt-2">Instrumental beats to lock-in.</p>
+                  </div>
+
+                  <div class="flex-shrink-0" style="width: 200px;">
+                    <img src="assets/imgs/main/image-19.jpg" class="img-fluid rounded" alt="Album 3">
+                    <p class="mt-2">Rep hits to keep your workout fresh</p>
+                  </div>
+
+                  <div class="flex-shrink-0" style="width: 200px;">
+                    <img src="assets/imgs/main/image-17.jpg" class="img-fluid rounded" alt="Album 4">
+                    <p class="mt-2">New songs of Mecna, Justin Bieber, BLACKPINK, Niky Savage...</p>
+                  </div>
+
+                  <div class="flex-shrink-0" style="width: 200px;">
+                    <img src="assets/imgs/search/image-8.jpg" class="img-fluid rounded" alt="Album 5">
+                    <p class="mt-2">Get your beast mode on!</p>
+                  </div>
+
+                  <div class="flex-shrink-0" style="width: 200px;">
+                    <img src="assets/imgs/main/image-5.jpg" class="img-fluid rounded" alt="Album 6">
+                    <p class="mt-2">chill beats, lofi vibes, new tracks every week..</p>
+                  </div>
+                </div><br>
+
+                <div class="copy text-light small">
+                  &copy; &#8471; 2022 KIDinaKORNER/Interscope Records
+                </div>
+              </div>
+            </div>
+
+            <div class="row desktop py-5 d-none d-md-flex">
+              <div>
+                <div class="header d-none">
+                  Mercury - Acts 1 & 2
+                </div>
+              </div>
+          
+              <div class="hero d-flex align-items-end mb-3">
+                <img src="assets/imgs/main/image-11.jpg" class="album-cover rounded-2 shadow w-25" alt="Album Cover">
+
+                <div class="album-info mt-3 ms-2 text-light">
+                  <p>
+                    Album
+                    <h1 class="mb-2 mt-2 text-white">Mercury - Acts 1 & 2</h1>
+                    <img src="assets/imgs/main/imagine-dragons.jpg" class="rounded-circle m-1" style="width: 30px; height: 30px; object-fit: cover;">
+                    <strong class="text-white" onclick="showData(3)" style="cursor: pointer;">Imagine Dragons</strong> • 2022 • 32 songs, 1h 42min
+                  </p>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <div class="left">
+                  <button class="btn-play"><i class="bi bi-play-fill"></i></button>
+                  <button class="icon-btn" title="Random"><i class="bi bi-shuffle"></i></button>
+                  <button class="icon-btn" title="Aggiungi alla libreria"><i class="bi bi-plus-circle"></i></button>
+                  <button class="icon-btn" title="Download"><i class="bi bi-arrow-down-circle"></i></button>
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots"></i></button>
+                </div>
+              </div>
+
+              <div class="track-list mt-3">
+                <table class="w-100">
+                  <thead class="track-info border-bottom text-light">
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Reproductions</th>
+                    <th><i class="bi bi-clock"></i></th>
+                  </thead>
+
+                  <tbody class="track">
+                    <tr>
+                      <td><i class="bi bi-disc"></i></td>
+                      <td>Disc 1</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <div class="track-title">Enemy (with JID) - from the series Arcane Leag...</div>
+                        <div class="track-artist text-muted">Imagine Dragons, JID, Arcane, League of Legends</div>
+                      </td>
+                      <td>1.815.825.768</td>
+                      <td>2:53</td>
+                    </tr>
+
+                    <tr>
+                      <td>2</td>
+                      <td>
+                        <div class="track-title">My Life</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>104.119.533</td>
+                      <td>3:44</td>
+                    </tr>
+
+                    <tr>
+                      <td>3</td>
+                      <td>
+                        <div class="track-title">Lonely</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>137.939.722</td>
+                      <td>2:39</td>
+                    </tr>
+
+                    <tr>
+                      <td>4</td>
+                      <td>
+                        <div class="track-title">Wrecked</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>364.583.643</td>
+                      <td>4:.4</td>
+                    </tr>
+
+                    <tr>
+                      <td>5</td>
+                      <td>
+                        <div class="track-title">Monday</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>59.666.035</td>
+                      <td>2:53</td>
+                    </tr>
+
+                    <tr>
+                      <td>6</td>
+                      <td>
+                        <div class="track-title">#1</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>54.305.986</td>
+                      <td>3:25</td>
+                    </tr>
+
+                    <tr>
+                      <td>7</td>
+                      <td>
+                        <div class="track-title">Easy Come Easy Go</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>50.826.053</td>
+                      <td>2:59</td>
+                    </tr>
+
+                    <tr>
+                      <td>8</td>
+                      <td>
+                        <div class="track-title">Giants</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>47.570.311</td>
+                      <td>3:30</td>
+                    </tr>
+
+                    <tr>
+                      <td>9</td>
+                      <td>
+                        <div class="track-title">It's Ok</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>52.977.421</td>
+                      <td>3:22</td>
+                    </tr>
+
+                    <tr>
+                      <td>10</td>
+                      <td>
+                        <div class="track-title">Dull Knives</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>48.928.238</td>
+                      <td>3:33</td>
+                    </tr>
+
+                    <tr>
+                      <td>11</td>
+                      <td>
+                        <div class="track-title">Follow You</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>479.385.971</td>
+                      <td>2:55</td>
+                    </tr>
+
+                    <tr>
+                      <td>12</td>
+                      <td>
+                        <div class="track-title">Cutthroat</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>67.253.031</td>
+                      <td>2:49</td>
+                    </tr>
+
+                    <tr>
+                      <td>13</td>
+                      <td>
+                        <div class="track-title">No Time For Toxic People</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>53.160.455</td>
+                      <td>3:27</td>
+                    </tr>
+
+                    <tr>
+                      <td>14</td>
+                      <td>
+                        <div class="track-title">One Day</div>
+                        <div class="track-artist text-muted">Imagine Dragons</div>
+                      </td>
+                      <td>54.760.527</td>
+                      <td>2:31</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="foot mt-3">
+                <div class="copy text-light small">
+                  <p>
+                    1 luglio 2022 <br>
+                    &copy; 2022 KIDinaKORNER/Interscope Records <br>
+                    &#8471; 2022 KIDinaKORNER/Interscope Records
+                  </p>
+                </div>
+
+                <h5 class="mt-5">You might also like</h5>
+
+                <div class="d-flex py-3 px-2 gap-3">
+                  <div class="card bg-transparent text-light" style="width: 300px;">
+                    <img src="assets/imgs/main/image-1.jpg" class="img-fluid rounded" alt="Album 1">
+                    <p class="mt-2">
+                      PARENTAL ADVISORY <br>
+                      2018
+                    </p>
+                  </div>
+
+                  <div class="card bg-transparent text-light" style="width: 300px;">
+                    <img src="assets/imgs/main/image-8.jpg" class="img-fluid rounded" alt="Album 2">
+                    <p class="mt-2">
+                      Sanguegiovane <br>
+                      2023
+                    </p>
+                  </div>
+
+                  <div class="card bg-transparent text-light" style="width: 300px;">
+                    <img src="assets/imgs/search/image-37.jpeg" class="img-fluid rounded" alt="Album 3">
+                    <p class="mt-2">Thunder <br>
+                      2020
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artistpage -->
+          <div class="data" id="data3">
+            <div class="centrale-artista-cover">
+              <div class="centrale-artista-info">
+                <div class="centrale-artista-badge">
+                  <i class="bi bi-patch-check-fill"></i> Artista verificato
+                </div>
+
+                <h1 class="centrale-artista-title">Imagine Dragons</h1>
+
+                <ul id="track-list"></ul>
+
+                <div class="centrale-artista-listeners">
+                  58.727.336 ascoltatori mensili
+                </div>
+              </div>
+            </div>
+
+            <div class="centrale-artista-buttons">
+              <button class="btn-play me-2"><i class="bi bi-play-fill"></i></button>
+
+              <button id="follow-btn" class="btn btn-outline-light fw-bold btn-follow">Segui</button>
+
+              <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="bi bi-flag"></i>Segnala</a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="bi bi-link-45deg"></i>Condividi</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row centrale-artista-main">
+              <div class="col-12 col-lg-8">
+                <h4>Popolari</h4>
+
+                <ol class="list-unstyled popular-tracks" id="popular-tracks"></ol>
+
+                <a href="#" class="text-secondary small" id="show-more-tracks">VISUALIZZA ALTRO</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rightbar -->
+        <div class="col d-none d-md-flex col-md-3 col-lg-3 column text-light border border-3 border-black rounded-3 flex-column rightbar">
+          <section class="d-flex justify-content-between align-items-center mt-2 p-2 rounded-3" id="section-friends">
+            <h4 class="fs-6">Attività amici</h4>
+            <div>
+              <button id="btn-addFriend">
+                <i class="bi bi-person-add fs-4"></i>
+              </button>
+              <button id="btn-close">
+                <i class="bi bi-x fs-4"></i>
+              </button>
+            </div>
+          </section>
+
+          <section id="riconoscimenti" class="d-flex justify-content-between mt-4 p-2 rounded-3 gap-1">
+            <div class="col col-12 mt-2 overflow-y-auto">
+              <h4 class="fs-6" style="font-weight: bold">Riconoscimenti</h4>
+
+              <p class="fs-6">
+                <span style="font-weight: bold">Ultimo</span><br>
+                Artista principale
+              </p>
+
+              <p class="fs-6">
+                <span style="font-weight: bold">Niccolò Moriconi</span><br>
+                Compositore, Paroliere
+              </p>
+
+              <p class="fs-6">
+                <span style="font-weight: bold">Enemies</span> Produttore
+              </p><br>
+            </div>
+          </section>
+
+          <section id="inTour" class="d-flex flex-column mt-4 rounded-3 overflow-y-auto">
+            <div class="col col-12">
+              <h4 class="fs-6" id="title-tour">In tour</h4>
+
+              <div class="d-flex flex-column gap-1">
+                <i class="bi bi-calendar3 fs-4"></i>
+                <h4 class="fs-6">Bishopric of Messina</h4>
+                <h5 class="fs-6 text-secondary">
+                  Ultimo <br>
+                  ven 21:00 (Stadio Franco Scoglio)
+                </h5>
+              </div>
+
+              <div class="d-flex flex-column gap-1 mt-1 overflow-y-auto">
+                <i class="bi bi-calendar3 fs-4"></i>
+                <h4 class="fs-6">Città Metropolitana di Bari</h4>
+                <h5 class="fs-6 text-secondary">
+                  Ultimo <br>
+                  ven 21:00 (Stadio San Nicola)
+                </h5>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+    <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/artist.js"></script>
+  </body>
+</html>

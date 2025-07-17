@@ -1,5 +1,4 @@
-// aggiungo un eventlistner alla barra di ricerca
-
+/* ============================== SEARCH ============================== */
 document.getElementById("research").addEventListener("input", function (e) {
   // rimuovo spazi iniziali e finali dal testo digitato
   const query = e.target.value.trim();
@@ -59,7 +58,7 @@ function searchSong(query) {
 // funzione che riceve array di tracce  e le mostra nel DOM
 function displayResults(tracks) {
   // Questo è il contenitore principale dove verranno mostrate le card dei risultati
-  const central = document.getElementById("homepage");
+  const central = document.getElementsByClassName("homepage")[0];
 
   console.log("displayResults() chiamata con", tracks.length, "tracce");
 
@@ -100,13 +99,81 @@ function displayResults(tracks) {
   console.log("Completato");
 }
 
-// btn home
-// salvo il contenuto iniziale della home page
-const centralDiv = document.getElementById("homepage");
-const homePageContent = centralDiv.innerHTML;
+/* ============================== SWITCH PAGES ============================== */
+const showData = function (buttonNumber) {
+  // Nasconde tutti i data
+  const dataContainers = document.querySelectorAll(".data");
+  dataContainers.forEach((container) => (container.style.display = "none"));
 
-// aggiungo evento
-document.getElementById("home-btn").addEventListener("click", function () {
-  // ripristino home page originale
-  centralDiv.innerHTML = homePageContent;
+  // Mostra il "data" rispettivo al bottone cliccato
+  document.getElementById("data" + buttonNumber).style.display = "block";
+
+  // Sezione artista (buttonNumber === 3): popola la lista Popolari
+  if (buttonNumber === 3 && typeof showPopularTracks === "function") {
+    showPopularTracks();
+  }
+};
+
+window.onload = function () {
+  showData(1);
+};
+
+/* ============================== ALBUM FUNCTIONS ============================== */
+document.addEventListener("DOMContentLoaded", function () {
+  // colorThief per sfondo
+  const colorThief = new ColorThief();
+  const albumCover = document.querySelector(".album-cover");
+  const albumContainer = document.querySelector(".album-container");
+
+  const setBackgroundFromImage = function () {
+    const color = colorThief.getColor(albumCover);
+    albumContainer.style.background = `linear-gradient(to top, #121212 80%, rgb(${color[0]}, ${color[1]}, ${color[2]}))`;
+  };
+
+  if (albumCover.complete) {
+    setBackgroundFromImage();
+  } else {
+    albumCover.addEventListener("load", setBackgroundFromImage);
+  }
+});
+
+const scrollContainer = document.querySelector(".scroll-container");
+scrollContainer.addEventListener("scroll", function () {
+  const headers = scrollContainer.querySelectorAll(".header");
+  const playButtons = scrollContainer.querySelectorAll(".btn-play");
+  const albumCovers = scrollContainer.querySelectorAll(".album-cover");
+
+  headers.forEach((header) => {
+    if (scrollContainer.scrollTop > 300) {
+      header.classList.add("scrolled");
+      header.classList.remove("d-none");
+    } else {
+      header.classList.remove("scrolled");
+      header.classList.add("d-none");
+    }
+  });
+
+  playButtons.forEach((playButton) => {
+    const header = playButton
+      .closest(".album-container")
+      .querySelector(".header");
+    if (!header) return;
+
+    const headerBottom = header.getBoundingClientRect().bottom;
+    const playButtonTop = playButton.getBoundingClientRect().top;
+
+    if (headerBottom >= playButtonTop) {
+      playButton.classList.add("sticky-under-header");
+    } else {
+      playButton.classList.remove("sticky-under-header");
+    }
+  });
+
+  albumCovers.forEach((albumCover) => {
+    const minScale = 0.5;
+    const maxScroll = 300;
+    const scrollY = Math.min(scrollContainer.scrollTop, maxScroll);
+    const scale = 1 - (1 - minScale) * (scrollY / maxScroll);
+    albumCover.style.transform = `scale(${scale})`;
+  });
 });

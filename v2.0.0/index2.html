@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/imgs/favicon.png">
+    <title>Spotify - Lettore web: musica per tutti</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/circular-font.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body class="bg-black">
+    <header>
+      <nav class="container-fluid bg-black p-2">
+        <div class="row align-items-center g-0 flex-nowrap">
+          <!-- colonna di sinistra -->
+
+          <div class="col-md-4 d-none d-md-flex align-items-center">
+            <button class="btn btn-black text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-three-dots"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"
+                />
+              </svg>
+            </button>
+
+            <button class="btn btn-black text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223"
+                />
+              </svg>
+            </button>
+            <button class="btn btn-black text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-compact-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671"
+                />
+              </svg>
+            </button>
+          </div>
+          <!-- Colonna centrale -->
+          <div
+            class="col-10 col-md-4 d-flex align-items-center justify-content-center"
+          >
+            <button
+              id="home-btn"
+              class="btn btn-dark btn-sm me-1 border border-black rounded-circle p-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="white"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"
+                />
+              </svg>
+            </button>
+
+            <div class="input-group" style="max-width: 300px">
+              <span class="input-group-text bg-dark border-dark text-light">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0
+               1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0
+               5.5 5.5 0 0 1 11 0"
+                  />
+                </svg>
+              </span>
+              <input
+                type="text"
+                class="form-control search-bar text-light bg-dark border-dark"
+                placeholder="Cosa vuoi ascoltare?"
+                id="research"
+              />
+              <span class="input-group-text bg-dark border-dark text-light">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-archive"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Colonna destra -->
+          <div
+            class="col-2 col-md-4 d-flex align-items-center justify-content-end gap-2"
+          >
+            <!-- Bottoni visibili solo su xl e oltre -->
+            <div class="d-none d-lg-flex gap-2">
+              <button class="btn btn-light btn-sm fw-bold border rounded-5 p-2">
+                Esplora Premium
+              </button>
+              <button class="btn btn-black">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-bell text-light"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"
+                  />
+                </svg>
+              </button>
+              <button class="btn btn-black">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-people text-light"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"
+                  />
+                </svg>
+              </button>
+              <button
+                class="avatar btn btn-black border-black rounded-circle bg-warning"
+              >
+                A
+              </button>
+            </div>
+            <!-- Dropdown visibile su sm/md/lg -->
+            <div class="dropdown d-xl-none ms-auto">
+              <button
+                class="btn btn-black dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="white"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z"
+                  />
+                </svg>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end bg-dark text-light"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item text-light" href="#"
+                    >Esplora Premium</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item text-light" href="#">Notifiche</a>
+                </li>
+                <li><a class="dropdown-item text-light" href="#">Utenti</a></li>
+                <li>
+                  <a class="dropdown-item text-light" href="#">Profilo</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="ps-1 pe-1">
+      <div class="row">
+        <div class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-3 sidebar-spotify"></div>
+
+        <!-- Centralbar -->
+        <div class="col col-12 col-md-6 col-lg-6 column text-light border border-3 border-black rounded-3 p-0 scroll-container">
+          <!-- Homepage -->
+          <div class="data homepage m-3" id="data1">
+            <section class="d-flex flex-column flex-lg-row justify-content-between" id="section-welcome">
+              <div class="d-flex gap-2 mb-4 py-3" id="box-filter">
+                <button class="btn-filter bg-light text-black">Tutto</button>
+                <button class="btn-filter">Musica</button>
+                <button class="btn-filter">Podcast</button>
+              </div>
+            </section>
+
+            <section id="album-list">
+              <div class="row g-3">
+                <div class="col col-6 col-md-6 col-lg-3" onclick="showData(2, this.id)"></div>
+              </div>
+            </section>
+
+            <section class="mt-5">
+              <div class="row"> <!-- Create per te-->
+                <h4>Create per te</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-1.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Parental advisory</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-2.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">pov: la tua estate è un film</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-3.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Massima concentrazione</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-4.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Peaceful piano</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/search/image-5.jpg" class="img-fluid rounded w-50" alt="Album 5">
+                    <p class="mt-2">Viva latino</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-6.jpg" class="img-fluid rounded w-50" alt="Album 6">
+                    <p class="mt-2">Jazz vibes</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5"><!-- Ascoltate di recente -->
+                <h4>Ascoltate di recente</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-7.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Caffè del buongiorno</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-8.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">Sanguegiovane</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-9.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Canta sotto la doccia</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-10.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Operazione buongiorno</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/search/image-11.jpg" class="img-fluid rounded w-50" alt="Album 5">
+                    <p class="mt-2">Song to sing in the car</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-12.jpg" class="img-fluid rounded w-50" alt="Album 6">
+                    <p class="mt-2">.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5"><!-- Album con brani che ti piacciono -->
+                <h4>Album con brani che ti piacciono</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-13.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Pulizie di casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-14.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">Allenamento a casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-15.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Casa dolce casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-16.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Lavorare da casa</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/search/image-17.jpg" class="img-fluid rounded w-50" alt="Album 5">
+                    <p class="mt-2">Street relief</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-18.jpg" class="img-fluid rounded w-50" alt="Album 6">
+                    <p class="mt-2">Estate 2022</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5"><!-- Nuove uscite -->
+                <h4>Nuove uscite</h4>
+
+                <div class="d-flex overflow-auto py-3">
+                  <div class="flex-shrink-0" onclick="showData(2)">
+                    <img src="assets/imgs/main/image-11.jpg" class="img-fluid rounded w-50" alt="Album 1">
+                    <p class="mt-2">Mercury - Acts 1 & 2</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-4.jpg" class="img-fluid rounded w-50" alt="Album 2">
+                    <p class="mt-2">Peaceful piano</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-19.jpg" class="img-fluid rounded w-50" alt="Album 3">
+                    <p class="mt-2">Street culto</p>
+                  </div>
+
+                  <div class="flex-shrink-0">
+                    <img src="assets/imgs/main/image-8.jpg" class="img-fluid rounded w-50" alt="Album 4">
+                    <p class="mt-2">Sanguegiovane</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Albumpage -->
+          <div class="data album-container" id="data2">
+
+            <div class="row desktop py-5 d-none d-md-flex">
+              <div class="header d-none"></div>
+          
+              <div class="hero d-flex align-items-end mb-3">
+                <img src="assets/imgs/main/image-11.jpg" class="album-cover rounded-2 shadow w-25" alt="Album Cover">
+
+                <div class="album-info mt-3 ms-2 text-light">
+                  <p>
+                    Album
+                    <h1 class="mb-2 mt-2 text-white"></h1>
+                    <strong class="text-white" onclick="showData(3)" style="cursor: pointer;"></strong>
+                  </p>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <div class="left">
+                  <button class="btn-play"><i class="bi bi-play-fill"></i></button>
+                  <button class="icon-btn" title="Random"><i class="bi bi-shuffle"></i></button>
+                  <button class="icon-btn" title="Aggiungi alla libreria"><i class="bi bi-plus-circle"></i></button>
+                  <button class="icon-btn" title="Download"><i class="bi bi-arrow-down-circle"></i></button>
+                  <button class="icon-btn" title="Altro"><i class="bi bi-three-dots"></i></button>
+                </div>
+              </div>
+
+              <div class="track-list mt-3">
+                <table class="w-100">
+                  <thead class="track-info border-bottom text-light">
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Reproductions</th>
+                    <th><i class="bi bi-clock"></i></th>
+                  </thead>
+
+                  <tbody class="track"></tbody>
+                </table>
+              </div>
+
+              <div class="foot mt-3">
+                <div class="copy text-light small">
+                  <p>
+                    1 luglio 2022 <br>
+                    &copy; 2022 KIDinaKORNER/Interscope Records <br>
+                    &#8471; 2022 KIDinaKORNER/Interscope Records
+                  </p>
+                </div>
+
+                <h5 class="mt-5">You might also like</h5>
+
+                <div class="d-flex py-3 px-2 gap-3">
+                  <div class="card bg-transparent text-light" style="width: 300px;">
+                    <img src="assets/imgs/main/image-1.jpg" class="img-fluid rounded" alt="Album 1">
+                    <p class="mt-2">
+                      PARENTAL ADVISORY <br>
+                      2018
+                    </p>
+                  </div>
+
+                  <div class="card bg-transparent text-light" style="width: 300px;">
+                    <img src="assets/imgs/main/image-8.jpg" class="img-fluid rounded" alt="Album 2">
+                    <p class="mt-2">
+                      Sanguegiovane <br>
+                      2023
+                    </p>
+                  </div>
+
+                  <div class="card bg-transparent text-light" style="width: 300px;">
+                    <img src="assets/imgs/search/image-37.jpeg" class="img-fluid rounded" alt="Album 3">
+                    <p class="mt-2">Thunder <br>
+                      2020
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col d-none d-md-flex col-md-3 col-lg-3 bg-dark text-light border border-3 border-black vh-100 rounded-3 p-3 sidebar-spotify"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+    <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/artist.js"></script>
+
+    <script>
+    function generateAlbumCards() {
+        const container = document.querySelector('#album-list .row');
+        container.innerHTML = '';
+
+        const albums = ['Imagine Dragons', 'Eminem', 'Coldplay', 'Adele', 'Linkin Park', 'Drake', 'Taylor Swift', 'Muse'];
+
+        albums.forEach((albumName, index) => {
+        const colDiv = document.createElement('div');
+        colDiv.className = 'col col-6 col-md-6 col-lg-3';
+        colDiv.id = `album-${index + 1}`;
+
+        colDiv.innerHTML = `
+            <div onclick="showAlbumDetails('${albumName}')">
+            <img src="https://placehold.co/300x300?text=${encodeURIComponent(albumName)}" class="img-fluid rounded" alt="${albumName}">
+            <h4 class="text-white mt-2">${albumName}</h4>
+            </div>
+        `;
+
+        container.appendChild(colDiv);
+        });
+    }
+
+    const showAlbumDetails = async function (albumTitle) {
+        try {
+        const searchResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${encodeURIComponent(albumTitle)}`);
+        if (!searchResponse.ok) throw new Error('Errore nella ricerca');
+
+        const searchData = await searchResponse.json();
+        const firstTrack = searchData.data[0];
+        if (!firstTrack) {
+            alert('Album non trovato');
+            return;
+        }
+
+        const albumId = firstTrack.album.id;
+        const albumResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}`);
+        if (!albumResponse.ok) throw new Error('Errore nel recupero dettagli album');
+
+        const albumData = await albumResponse.json();
+
+        document.querySelector('#data2 .header').innerText = albumData.title;
+        document.querySelector('#data2 .hero img').src = albumData.cover_medium;
+        document.querySelector('#data2 .album-info h1').innerText = albumData.title;
+        document.querySelector('#data2 .album-info strong').innerText = albumData.artist.name;
+
+        const albumInfoP = document.querySelector('#data2 .album-info p');
+        albumInfoP.innerHTML = `
+            Album<br>
+            <strong class="text-white">${albumData.artist.name}</strong> • ${albumData.release_date.split('-')[0]} • ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min
+        `;
+
+        const tbody = document.querySelector('#data2 tbody.track');
+        tbody.innerHTML = '';
+        albumData.tracks.data.forEach((track, index) => {
+            tbody.innerHTML += `
+            <tr class="text-light">
+                <td>${index + 1}</td>
+                <td>${track.title}</td>
+                <td>${track.rank}</td>
+                <td>${Math.floor(track.duration / 60)}:${(track.duration % 60).toString().padStart(2, '0')}</td>
+            </tr>
+            `;
+        });
+
+        // Mostra la sezione #data2
+        } catch (err) {
+        console.error(err);
+        alert('Errore nel caricamento dei dati');
+        }
+    };
+
+    // Richiama la funzione al caricamento pagina
+    window.addEventListener('DOMContentLoaded', generateAlbumCards);
+    </script>
+  </body>
+</html>
