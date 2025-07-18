@@ -100,7 +100,7 @@ function displayResults(tracks) {
 }
 
 /* ============================== SWITCH PAGES ============================== */
-const showData = function (buttonNumber) {
+const showData = function (buttonNumber, artistId) {
   // Nasconde tutti i data
   const dataContainers = document.querySelectorAll(".data");
   dataContainers.forEach((container) => (container.style.display = "none"));
@@ -110,7 +110,7 @@ const showData = function (buttonNumber) {
 
   // Sezione artista (buttonNumber === 3): popola la lista Popolari
   if (buttonNumber === 3 && typeof showPopularTracks === "function") {
-    showPopularTracks();
+    showPopularTracks(artistId);
   }
 };
 

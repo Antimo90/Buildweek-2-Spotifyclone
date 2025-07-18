@@ -40,8 +40,7 @@ function renderPopularTracks() {
   }
 }
 
-function showPopularTracks() {
-  const artistId = 416239;
+function showPopularTracks(artistId = 416239) {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/top?limit=10`;
 
   fetch(url)
