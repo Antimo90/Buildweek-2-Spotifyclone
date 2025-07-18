@@ -11,7 +11,7 @@ body {
 }
 
 .column {
-  height: 92vh;
+  height: 90vh;
   overflow-y: auto;
   background-color: #121212;
 }
@@ -28,6 +28,10 @@ body {
   padding: 1em;
 }
 
+.form-control:focus{
+  box-shadow: none;
+}
+
 /* ==================== HOMEPAGE ==================== */
 .homepage .btn-filter {
   border: none;
@@ -35,6 +39,18 @@ body {
   background-color: rgba(128, 128, 128, 0.203);
   color: white;
   padding: 0.5em;
+}
+
+.homepageAll {
+  flex-grow: 1;
+  transition: all 0.2s linear 0s;
+}
+
+#btn-people:hover {
+  border: 1px solid white;
+  border-radius: 40px;
+  box-shadow: 0px 0px 5px 1px white;
+  transition: all 0.1s linear 0s;
 }
 
 .homepage .btn-filter:hover {
@@ -114,13 +130,9 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  position: absolute;
+  position: fixed;
   font-size: 1rem;
   z-index: 1;
-}
-
-.desktop .header {
-  position: fixed;
 }
 
 .scrolled {
@@ -146,7 +158,8 @@ body {
   font-size: 1.5rem;
 }
 
-.album-info p, .date p {
+.album-info p,
+.date p {
   color: #b3b3b3;
   font-size: 12px;
   margin-bottom: 0.5rem;
@@ -160,7 +173,8 @@ body {
   margin-top: 1rem;
 }
 
-.left, .right {
+.left,
+.right {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -195,13 +209,14 @@ body {
 }
 
 /* ----- TRACKS ----- */
-.mobile .track, .mobile .copy {
+.mobile .track,
+.mobile .copy {
   padding: 0.5rem 0;
-  font-size: 0.70rem;
+  font-size: 0.7rem;
 }
 
 /* ----- TABLE ----- */
-td{
+td {
   padding: 10px 0;
 }
 
@@ -512,7 +527,6 @@ img {
   font-weight: 600;
   color: #b3b3b3;
 }
-
 
 .track-title {
   font-weight: 500;
