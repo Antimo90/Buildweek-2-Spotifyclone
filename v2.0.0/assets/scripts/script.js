@@ -58,7 +58,7 @@ function searchSong(query) {
 // funzione che riceve array di tracce  e le mostra nel DOM
 function displayResults(tracks) {
   // Questo è il contenitore principale dove verranno mostrate le card dei risultati
-  const central = document.getElementsByClassName("homepage")[0];
+  const centralDiv = document.getElementsByClassName("homepage")[0];
 
   console.log("displayResults() chiamata con", tracks.length, "tracce");
 
@@ -94,10 +94,21 @@ function displayResults(tracks) {
   content += `</div>`;
 
   // Sovrascrive tutto il contenuto della colonna centrale
-  central.innerHTML = content;
+  centralDiv.innerHTML = content;
 
   console.log("Completato");
 }
+
+// btn home
+// salvo il contenuto iniziale della home page
+const centralDiv = document.getElementsByClassName("homepage")[0];
+const homePageContent = centralDiv.innerHTML;
+
+// aggiungo evento
+document.getElementById("home-btn").addEventListener("click", function () {
+  // ripristino home page originale
+  centralDiv.innerHTML = homePageContent;
+});
 
 /* ============================== SWITCH PAGES ============================== */
 const showData = function (buttonNumber) {

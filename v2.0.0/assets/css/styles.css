@@ -11,7 +11,7 @@ body {
 }
 
 .column {
-  height: 92vh;
+  height: 90vh;
   overflow-y: auto;
   background-color: #121212;
 }
@@ -26,6 +26,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 1em;
+}
+
+.form-control:focus{
+  box-shadow: none;
 }
 
 /* ==================== HOMEPAGE ==================== */
@@ -126,13 +130,9 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  position: absolute;
+  position: fixed;
   font-size: 1rem;
   z-index: 1;
-}
-
-.desktop .header {
-  position: fixed;
 }
 
 .scrolled {
