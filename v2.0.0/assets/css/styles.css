@@ -118,7 +118,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  position: absolute;
+  position: fixed;
   font-size: 1rem;
   z-index: 1;
 }

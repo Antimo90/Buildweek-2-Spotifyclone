@@ -79,16 +79,24 @@ const showAlbumDetails = async function (albumTitle) {
     if (!albumResponse.ok) throw new Error("Errore nel recupero dettagli album");
     const albumData = await albumResponse.json();
 
-        document.querySelector('#data2 .header').innerText = albumData.title;
-        document.querySelector('#data2 .hero img').src = albumData.cover_medium;
-        document.querySelector('#data2 .album-info h1').innerText = albumData.title;
-        document.querySelector('#data2 .album-info strong').innerText = albumData.artist.name;
+    document.querySelector('#data2 .header').innerText = albumData.title;
+    document.querySelector('#data2 .hero img').src = albumData.cover_medium;
+    document.querySelector('#data2 .album-info h1').innerText = albumData.title;
 
-        const albumInfoP = document.querySelector('#data2 .album-info p');
-        albumInfoP.innerHTML = `
-            Album<br>
-            <strong class="text-white">${albumData.artist.name}</strong> • ${albumData.release_date.split('-')[0]} • ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min
-        `;
+    const albumInfoP = document.querySelector('#data2 .album-info p');
+    albumInfoP.innerHTML = `
+      Album<br>
+      <h1></h1>
+      <img src='${albumData.cover_medium}' class='me-1 rounded-pill' style='width: 20px'>
+      <strong class="text-white">${albumData.artist.name}</strong> • ${albumData.release_date.split('-')[0]} • ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min
+    `;
+
+    const albumInfoP2 = document.querySelector('#data2 .album-info2 p');
+    albumInfoP2.innerHTML = `
+      ${albumData.release_date.split('-')[0]} <br> ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min <br>
+      <img src='${albumData.cover_medium}' class='me-1 rounded-pill' style='width: 20px'>
+      <strong class="text-white">${albumData.artist.name}</strong>
+    `;
 
     /* ----- TRACCE ----- */
     const tbody = document.querySelector("#data2 tbody.track");
