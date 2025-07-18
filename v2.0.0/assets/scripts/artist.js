@@ -88,6 +88,14 @@ async function showArtistPage(artistId) {
   document.getElementById("data2").style.display = "none";
   document.getElementById("data3").style.display = "block";
 
+  // Mostra un loader mentre carica i dati
+  const artistMain = document.querySelector(".centrale-artista-main");
+  const trackList = document.getElementById("popular-tracks");
+  if (artistMain) artistMain.classList.add("position-relative");
+  if (trackList)
+    trackList.innerHTML =
+      '<div id="artist-loader" class="text-center w-100 my-4"><div class="spinner-border text-light" role="status"><span class="visually-hidden">Caricamento...</span></div></div>';
+
   const res = await fetch(
     `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}`
   );
@@ -129,7 +137,6 @@ async function showArtistPage(artistId) {
 
   // Mostra 5 canzoni iniziali, poi altre 5 con Visualizza Altro
   let tracksShown = 5;
-  const trackList = document.getElementById("popular-tracks");
   const showMoreBtn = document.getElementById("show-more-tracks");
   let showLessBtn = document.getElementById("show-less-tracks");
   if (!showLessBtn) {
@@ -205,3 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// Rendo la sezione artista (#data3) nascosta all'avvio
+if (document.getElementById("data3")) {
+  document.getElementById("data3").style.display = "none";
+}
