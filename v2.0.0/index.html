@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./assets/css/circular-font.css">
-    <link rel="stylesheet" href="assets/css/sidebar.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
   </head>
   <body class="bg-black">
    <header>
@@ -150,7 +150,7 @@
                   />
                 </svg>
               </button>
-              <button class="btn btn-black">
+              <button class="btn btn-black" id="btn-people">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -318,7 +318,7 @@
         </div>
 
         <!-- Centralbar -->
-        <div class="col col-12 col-md-6 col-lg-6 column text-light border border-3 border-black rounded-3 p-0 scroll-container">
+        <div class="col col-12 col-md-6 col-lg-6 column text-light border border-3 border-black rounded-3 p-0 scroll-container column-central-home">
           <!-- Homepage -->
           <div class="data homepage m-3" id="data1">
             <section class="d-flex flex-column flex-lg-row justify-content-between" id="section-welcome">
@@ -1019,15 +1019,21 @@
 
         <!-- Rightbar -->
         <div class="col d-none d-md-flex col-md-3 col-lg-3 column text-light border border-3 border-black rounded-3 flex-column rightbar">
-          <section class="d-flex justify-content-between align-items-center mt-2 p-2 rounded-3" id="section-friends">
-            <h4 class="fs-6">Attività amici</h4>
-            <div>
+          <section class="d-flex flex-column mt-2 p-2 rounded-3" id="section-friends">
+           <div
+              class="d-flex flex-column justify-content-around align-items-center"
+            >
+              <h4 id="title-friend">Attività amici</h4>
               <button id="btn-addFriend">
-                <i class="bi bi-person-add fs-4"></i>
+                <i class="bi bi-person-add fs-3"></i>
               </button>
-              <button id="btn-close">
+              <form id="myFriendForm" class="d-none"></form>
+              <!-- <button id="btn-close">
                 <i class="bi bi-x fs-4"></i>
-              </button>
+              </button> -->
+            </div>
+            <div>
+              <ul id="list-friends" class="d-flex flex-column mt-4"></ul>
             </div>
           </section>
 

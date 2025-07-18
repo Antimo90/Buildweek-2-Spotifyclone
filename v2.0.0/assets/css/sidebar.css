@@ -129,15 +129,94 @@
 }
 
 /* RIGHTBAR */
+
+.sideOff {
+  display: none !important;
+}
+
 .rightbar #section-friends {
   background-color: rgba(255, 255, 255, 0.034);
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.321);
 }
 
-.rightbar #btn-addFriend {
+main .rightbar #title-friend {
+  margin-top: 11px;
+}
+
+@keyframes formFriend {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.2;
+    transform: translateX(1px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(2px);
+  }
+
+  75% {
+    opacity: 0.7;
+    transform: translateX(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
+
+main .rightbar #myFriendForm {
+  border-left: 1px solid #a5a2a2;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: formFriend 0.2s linear 0s 1 forwards;
+}
+
+main .rightbar #inputFriend {
+  border: none;
+  background-color: #0c0c0c;
+  color: #8e9eab;
+  border-radius: 5px;
+  padding: 3px;
+  width: 9.5em;
+}
+
+main .rightbar #btn-friendForm {
+  border: none;
+  background-color: slategray;
+  width: 6em;
+  height: 2em;
+  margin-top: 1em;
+}
+
+main .rightbar #list-friends {
+  list-style-type: none;
+}
+
+main .rightbar #btn-friendForm:hover {
+  box-shadow: 0px 0px 4px 1px #ebe6e6;
+  transition: all 0.2s linear 0s;
+}
+
+main .rightbar #btn-addFriend {
   border: none;
   background-color: rgba(255, 255, 255, 0);
   color: white;
+}
+
+main .rightbar #btn-addFriend:hover {
+  border: 1px solid white;
+  border-radius: 40px;
+  box-shadow: 0px 0px 5px 1px white;
+  transition: all 0.1s linear 0s;
 }
 
 .rightbar #btn-close {
