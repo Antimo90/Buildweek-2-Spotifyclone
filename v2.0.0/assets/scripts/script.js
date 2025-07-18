@@ -128,3 +128,129 @@ const showData = function (buttonNumber) {
 window.onload = function () {
   showData(1);
 };
+
+/* ============================== ALBUM FUNCTIONS ============================== */
+document.addEventListener("DOMContentLoaded", function () {
+  // colorThief per sfondo
+  const colorThief = new ColorThief();
+  const albumCover = document.querySelector(".album-cover");
+  const albumContainer = document.querySelector(".album-container");
+
+  const setBackgroundFromImage = function () {
+    const color = colorThief.getColor(albumCover);
+    albumContainer.style.background = `linear-gradient(to top, #121212 80%, rgb(${color[0]}, ${color[1]}, ${color[2]}))`;
+  };
+
+  if (albumCover.complete) {
+    setBackgroundFromImage();
+  } else {
+    albumCover.addEventListener("load", setBackgroundFromImage);
+  }
+});
+
+const scrollContainer = document.querySelector(".scroll-container");
+scrollContainer.addEventListener("scroll", function () {
+  const headers = scrollContainer.querySelectorAll(".header");
+  const playButtons = scrollContainer.querySelectorAll(".btn-play");
+  const albumCovers = scrollContainer.querySelectorAll(".album-cover");
+
+  headers.forEach((header) => {
+    if (scrollContainer.scrollTop > 300) {
+      header.classList.add("scrolled");
+      header.classList.remove("d-none");
+    } else {
+      header.classList.remove("scrolled");
+      header.classList.add("d-none");
+    }
+  });
+
+  playButtons.forEach((playButton) => {
+    const header = playButton
+      .closest(".album-container")
+      .querySelector(".header");
+    if (!header) return;
+
+    const headerBottom = header.getBoundingClientRect().bottom;
+    const playButtonTop = playButton.getBoundingClientRect().top;
+
+    if (headerBottom >= playButtonTop) {
+      playButton.classList.add("sticky-under-header");
+    } else {
+      playButton.classList.remove("sticky-under-header");
+    }
+  });
+
+  albumCovers.forEach((albumCover) => {
+    const minScale = 0.5;
+    const maxScroll = 300;
+    const scrollY = Math.min(scrollContainer.scrollTop, maxScroll);
+    const scale = 1 - (1 - minScale) * (scrollY / maxScroll);
+    albumCover.style.transform = `scale(${scale})`;
+  });
+});
+
+// ---------------------------------------------------------------------------------
+
+// Funzione per chiudere ed aprire la sidebar di destra
+
+// recupero gli elementi del bottone e della sidebar
+
+const btnPeople = document.getElementById("btn-people");
+const sidebarRight = document.querySelector(".rightbar");
+const centralBar = document.querySelector(".column-central-home");
+
+btnPeople.addEventListener(`click`, () => {
+  sidebarRight.classList.toggle("sideOff");
+  centralBar.classList.toggle("homepageAll");
+});
+
+// Vado a creare la sezione "aggiungi amici" usando un form con un input da raccogliere che apprarià in un modale, e il nickname inserito verrà aggiunto in una lista messa nella sezione "aggiungi amici"
+
+const btnAdd = document.getElementById("btn-addFriend");
+const myForm = document.getElementById("myFriendForm");
+const memoryKey = "ListaAmici";
+
+btnAdd.addEventListener(`click`, () => {
+  myForm.classList.remove(`d-none`);
+
+  myForm.innerHTML = `<div class="ms-2">
+                    <input
+                    class="form-control"
+                      type="text"
+                      placeholder="Inserisci il nickname"
+                      required
+                      id="inputFriend"
+                    />
+                  </div>
+                  <button class="btn btn-primary" id="btn-friendForm">Aggiungi</button>`;
+});
+
+myForm.addEventListener(`submit`, (e) => {
+  e.preventDefault();
+
+  const input = document.getElementById("inputFriend");
+  const listFriends = document.getElementById("list-friends");
+
+  listFriends.innerHTML += `<li class="d-flex align-items-center"><i class="bi bi-person-circle me-2 fs-3"></i>${input.value}</li>`;
+
+  salvaLista();
+
+  myForm.reset();
+});
+
+const salvaLista = function () {
+  const listaDOM = document.querySelectorAll(`#list-friends li`);
+  const items = Array.from(listaDOM).map((li) => li.textContent);
+  localStorage.setItem(memoryKey, JSON.stringify(items));
+};
+
+window.onload = function () {
+  const savedList = JSON.parse(localStorage.getItem(memoryKey)) || [];
+  const ul = document.getElementById("list-friends");
+
+  for (let i = 0; i < savedList.length; i++) {
+    const li = document.createElement("li");
+    li.innerHTML += `<i class="bi bi-person-circle me-2 fs-3"></i>${savedList[i]}`;
+    ul.appendChild(li);
+  }
+};

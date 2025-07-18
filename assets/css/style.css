@@ -4,6 +4,10 @@ body {
   font-family: "Circular";
 }
 
+.form-control:focus {
+  box-shadow: none;
+}
+
 /* Lavoro sul main */
 
 /* sidebar sinistra */
