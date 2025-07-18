@@ -10,6 +10,7 @@ document.getElementById("research").addEventListener("input", function (e) {
   if (query.length === 0) {
     console.log("ritorno alla home");
     showHomePage();
+    location.reload()
   }
 
   // se la barra di ricerca ha almeno 3 caratteri inizio la ricerca
@@ -108,6 +109,7 @@ const homePageContent = centralDiv.innerHTML;
 document.getElementById("home-btn").addEventListener("click", function () {
   // ripristino home page originale
   centralDiv.innerHTML = homePageContent;
+  location.reload()
 });
 
 /* ============================== SWITCH PAGES ============================== */
