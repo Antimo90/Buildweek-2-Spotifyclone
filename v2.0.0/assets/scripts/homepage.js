@@ -2,7 +2,16 @@ async function generateAlbumCards() {
   const container = document.querySelector("#album-list .row");
   container.innerHTML = "";
 
-  const albums = ["Night Visions", "The Eminem Show", "Parachutes", "25", "Hybrid Theory", "Scorpion", "Imagine Dragons", "Absolution",];
+  const albums = [
+    "Night Visions",
+    "The Eminem Show",
+    "Parachutes",
+    "25",
+    "Hybrid Theory",
+    "Scorpion",
+    "Imagine Dragons",
+    "Absolution",
+  ];
 
   for (let i = 0; i < albums.length; i++) {
     try {
@@ -22,9 +31,20 @@ async function generateAlbumCards() {
 
       if (album) {
         colDiv.innerHTML = `
-          <div class="d-flex align-items-center w-100 bg-dark text-white rounded mb-2 shadow" style="cursor: pointer;" onclick="showAlbumDetails('${album.title}')">
-            <img src="${album.cover_medium}" class="rounded me-1" style='width: 50px;' alt="${album.title}">
-            <h5 class="mb-0" style='font-size: 10px;'>${album.title}</h5>
+          <div class="d-flex flex-column align-items-start w-100 bg-dark text-white rounded mb-2 shadow p-2">
+            <div class="d-flex align-items-center w-100" style="cursor: pointer;" onclick="showAlbumDetails('${
+              album.title
+            }')">
+              <img src="${
+                album.cover_medium
+              }" class="rounded me-1" style='width: 50px;' alt="${album.title}">
+              <h5 class="mb-0" style='font-size: 10px;'>${album.title}</h5>
+            </div>
+            ${
+              album.artist
+                ? `<span class="artist-link text-info" data-artist-id="${album.artist.id}" style="cursor:pointer; font-size:11px; margin-left:55px;">${album.artist.name}</span>`
+                : ""
+            }
           </div>
         `;
       } else {
@@ -44,6 +64,24 @@ async function generateAlbumCards() {
 }
 
 window.addEventListener("DOMContentLoaded", generateAlbumCards);
+
+// Gestione click su nome artista
+// Funzione placeholder showArtistPage(artistId) da implementare o collegare a quella esistente
+function showArtistPage(artistId) {
+  // Mostra la sezione artista e carica i dati
+  // Puoi sostituire questa funzione con la tua logica esistente
+  // Esempio base:
+  showData(3); // Se hai già una funzione che mostra la pagina artista
+  // Qui puoi aggiungere la fetch ai dati artista e il popolamento della pagina
+  // ...
+}
+
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("artist-link")) {
+    const artistId = e.target.getAttribute("data-artist-id");
+    showArtistPage(artistId);
+  }
+});
 
 /* ALBUM CAROSELLI */
 async function generateCarousel(albums, containerId) {
@@ -92,18 +130,36 @@ async function generateCarousel(albums, containerId) {
 
 window.addEventListener("DOMContentLoaded", () => {
   generateCarousel(
-    ["NF", "Agust D", "Sia", "Bruno Mars", "Banners", "Stray Kids",], "carousel-1"
+    ["NF", "Agust D", "Sia", "Bruno Mars", "Banners", "Stray Kids"],
+    "carousel-1"
   );
 
   generateCarousel(
-    ["Bungchan", "Lana Del Rai", "After Hours", "DAMN.", "Avicii", "Future Nostalgia",], "carousel-2"
+    [
+      "Bungchan",
+      "Lana Del Rai",
+      "After Hours",
+      "DAMN.",
+      "Avicii",
+      "Future Nostalgia",
+    ],
+    "carousel-2"
   );
 
   generateCarousel(
-    ["Currents", "Alan Walker", "Marshmello", "X&Y", "Golden Hour", "Starboy",], "carousel-3"
+    ["Currents", "Alan Walker", "Marshmello", "X&Y", "Golden Hour", "Starboy"],
+    "carousel-3"
   );
 
   generateCarousel(
-    ["Justice", "folklore", "BTS", "Astroworld", "Sabrina Carpenter", "Fine Line",], "carousel-4"
+    [
+      "Justice",
+      "folklore",
+      "BTS",
+      "Astroworld",
+      "Sabrina Carpenter",
+      "Fine Line",
+    ],
+    "carousel-4"
   );
 });
