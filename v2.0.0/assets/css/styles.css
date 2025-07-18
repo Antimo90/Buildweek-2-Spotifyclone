@@ -122,18 +122,26 @@ body {
 
 /* ==================== ALBUMPAGE ==================== */
 /* ----- .HEADER SCROLL ----- */
+.scroll-container {
+  height: 100vh; /* o quanto vuoi, tipo calc(100vh - headerHeight) */
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Modifica header per usarlo dentro scroll-container */
 .header {
-  width: 100%;
+  position: sticky;
   top: 0;
   left: 0;
   height: 70px;
   display: flex;
   align-items: center;
   padding-left: 15px;
-  position: fixed;
   font-size: 1rem;
-  z-index: 1;
+  z-index: 10;
 }
+
 
 .scrolled {
   background: linear-gradient(to top, #121212 0.1%, rgb(155, 34, 38));
@@ -201,11 +209,10 @@ body {
   transition: all 0.3s ease;
 }
 
-.sticky-under-header {
-  position: absolute;
-  top: calc(0px + 45px);
-  right: 20px;
-  z-index: 2;
+.btn-play.sticky-under-header {
+  position: sticky;
+  top: 70px; /* altezza header */
+  z-index: 5;
 }
 
 /* ----- TRACKS ----- */

@@ -1,21 +1,24 @@
 /* ============================== ALBUM FUNCTIONS ============================== */
-document.addEventListener("DOMContentLoaded", function () {
-  // colorThief per sfondo
-  const colorThief = new ColorThief();
-  const albumCover = document.querySelector(".album-cover");
-  const albumContainer = document.querySelector(".album-container");
+  window.addEventListener("load", function () {
+    const colorThief = new ColorThief();
+    const albumCover = document.querySelector(".album-cover");
+    const albumContainer = document.querySelector(".album-container");
 
-  const setBackgroundFromImage = function () {
-    const color = colorThief.getColor(albumCover);
-    albumContainer.style.background = `linear-gradient(to top, #121212 80%, rgb(${color[0]}, ${color[1]}, ${color[2]}))`;
-  };
+    function setBackgroundFromImage() {
+      try {
+        const color = colorThief.getColor(albumCover);
+        albumContainer.style.background = `linear-gradient(to top, #121212 80%, rgb(${color[0]}, ${color[1]}, ${color[2]}))`;
+      } catch (err) {
+        console.error("Errore con ColorThief:", err);
+      }
+    }
 
-  if (albumCover.complete) {
-    setBackgroundFromImage();
-  } else {
-    albumCover.addEventListener("load", setBackgroundFromImage);
-  }
-});
+    if (albumCover.complete) {
+      setBackgroundFromImage();
+    } else {
+      albumCover.addEventListener("load", setBackgroundFromImage);
+    }
+  });
 
 const scrollContainer = document.querySelector(".scroll-container");
 scrollContainer.addEventListener("scroll", function () {
@@ -87,15 +90,15 @@ const showAlbumDetails = async function (albumTitle) {
     albumInfoP.innerHTML = `
       Album<br>
       <h1></h1>
-      <img src='${albumData.cover_medium}' class='me-1 rounded-pill' style='width: 20px'>
-      <strong class="text-white">${albumData.artist.name}</strong> • ${albumData.release_date.split('-')[0]} • ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min
+      <img src='${albumData.cover_medium}' class='me-1 rounded-pill' onclick='showData(3)' style='width: 20px'>
+      <strong class="text-white" onclick='showData(3)'>${albumData.artist.name}</strong> • ${albumData.release_date.split('-')[0]} • ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min
     `;
 
     const albumInfoP2 = document.querySelector('#data2 .album-info2 p');
     albumInfoP2.innerHTML = `
       ${albumData.release_date.split('-')[0]} <br> ${albumData.nb_tracks} brani • ${Math.floor(albumData.duration / 60)} min <br>
-      <img src='${albumData.cover_medium}' class='me-1 rounded-pill' style='width: 20px'>
-      <strong class="text-white">${albumData.artist.name}</strong>
+      <img src='${albumData.cover_medium}' class='me-1 rounded-pill' onclick='showData(3)' style='width: 20px'>
+      <strong class="text-white" onclick='showData(3)'>${albumData.artist.name}</strong>
     `;
 
     /* ----- TRACCE ----- */
@@ -115,6 +118,7 @@ const showAlbumDetails = async function (albumTitle) {
 
     // Mostra la sezione #data2
     showData(2);
+    document.title = `${albumData.title}`;
   } catch (err) {
     console.error(err);
     alert("Errore nel caricamento dei dati");
