@@ -83,6 +83,111 @@ function formatDuration(seconds) {
   return `${min}:${sec.toString().padStart(2, "0")}`;
 }
 
+// Funzione globale per mostrare la pagina artista con dati dinamici
+async function showArtistPage(artistId) {
+  document.getElementById("data2").style.display = "none";
+  document.getElementById("data3").style.display = "block";
+
+  const res = await fetch(
+    `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}`
+  );
+  const artist = await res.json();
+
+  // Prendi gli album dell'artista
+  const resAlbums = await fetch(
+    `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/albums`
+  );
+  const albumsData = await resAlbums.json();
+  const albums = albumsData.data || [];
+
+  // Prendi le tracce da tutti gli album (fino a trovare 10 canzoni uniche)
+  let allTracks = [];
+  let trackIds = new Set();
+  for (let i = 0; i < albums.length && allTracks.length < 10; i++) {
+    const albumId = albums[i].id;
+    const resAlbum = await fetch(
+      `https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}`
+    );
+    const albumData = await resAlbum.json();
+    if (albumData.tracks && albumData.tracks.data) {
+      for (const track of albumData.tracks.data) {
+        if (!trackIds.has(track.id)) {
+          allTracks.push(track);
+          trackIds.add(track.id);
+          if (allTracks.length === 10) break;
+        }
+      }
+    }
+  }
+
+  document.querySelector(".centrale-artista-title").textContent = artist.name;
+  document.querySelector(
+    ".centrale-artista-cover"
+  ).style.backgroundImage = `url(${artist.picture_xl})`;
+  document.querySelector(".centrale-artista-listeners").textContent =
+    artist.nb_fan.toLocaleString() + " ascoltatori mensili";
+
+  // Mostra 5 canzoni iniziali, poi altre 5 con Visualizza Altro
+  let tracksShown = 5;
+  const trackList = document.getElementById("popular-tracks");
+  const showMoreBtn = document.getElementById("show-more-tracks");
+  let showLessBtn = document.getElementById("show-less-tracks");
+  if (!showLessBtn) {
+    showLessBtn = document.createElement("a");
+    showLessBtn.href = "#";
+    showLessBtn.id = "show-less-tracks";
+    showLessBtn.className = "text-secondary small ms-3";
+    showLessBtn.textContent = "VISUALIZZA MENO";
+    showMoreBtn.parentNode.insertBefore(showLessBtn, showMoreBtn.nextSibling);
+  }
+
+  function renderTracks() {
+    trackList.innerHTML = "";
+    allTracks.slice(0, tracksShown).forEach((track, i) => {
+      const li = document.createElement("li");
+      li.className = "d-flex align-items-center py-2";
+      li.innerHTML = `
+        <span class=\"track-number text-secondary\">${i + 1}</span>
+        <img src=\"${
+          track.album && track.album.cover_small ? track.album.cover_small : ""
+        }\" alt=\"\" width=\"40\" class=\"me-3 ms-3 rounded\">
+        <span class=\"track-title me-auto\">${track.title}</span>
+        <span class=\"track-plays text-secondary text-center\">${
+          track.rank ? track.rank.toLocaleString() : ""
+        }</span>
+        <span class=\"track-duration text-secondary ms-4\">${formatDuration(
+          track.duration
+        )}</span>
+      `;
+      trackList.appendChild(li);
+    });
+    // Gestione visibilità bottoni
+    if (allTracks.length > 5 && tracksShown < allTracks.length) {
+      showMoreBtn.style.display = "inline";
+    } else {
+      showMoreBtn.style.display = "none";
+    }
+    if (tracksShown > 5) {
+      showLessBtn.style.display = "inline";
+    } else {
+      showLessBtn.style.display = "none";
+    }
+  }
+
+  renderTracks();
+
+  showMoreBtn.onclick = function (e) {
+    e.preventDefault();
+    tracksShown = Math.min(tracksShown + 5, allTracks.length);
+    renderTracks();
+  };
+  showLessBtn.onclick = function (e) {
+    e.preventDefault();
+    tracksShown = 5;
+    renderTracks();
+  };
+}
+
 // Eventuale codice per il follow-btn e altri listener
 document.addEventListener("DOMContentLoaded", function () {
   const followBtn = document.getElementById("follow-btn");
