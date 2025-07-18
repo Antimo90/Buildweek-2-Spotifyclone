@@ -4,6 +4,7 @@ const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${enc
 )}`;
 
 // richiamo tutti i bottoni
+const newPlayer = document.getElementById("newPlayer");
 const shufflePlayback = document.getElementById("shuffle-playback");
 const skipBackward = document.getElementById("skip-backward");
 const playback = document.getElementById("playback");
@@ -373,4 +374,47 @@ fullscreen.addEventListener("click", () => {
       );
   }
 });
+
+/*newPlayer.addEventListener('click', () => {
+  if (currentPlaylist.length > 0) {
+    // Riproduci la canzone corrente nella playlist
+    playSong(currentPlaylist[currentSongIndex]);
+  } else {
+    // Se non ci sono ancora canzoni caricate, potresti volerle recuperare o avvisare l'utente
+    alert("Nessuna canzone caricata! Cerca prima della musica.");
+  }
+});*/
+
+// Esempio di come potresti gestire la selezione di una canzone
+const selectSongFromAlbum = function (songId) {
+  // Trova l'indice della canzone selezionata nella currentPlaylist
+  const index = currentPlaylist.findIndex(song => song.id === songId);
+  if (index !== -1) {
+    currentSongIndex = index; // Aggiorna l'indice della canzone corrente
+    console.log('Canzone selezionata: ${currentPlaylist[currentSongIndex].title}');
+    // Non la riproduciamo ancora, solo la selezioniamo
+  } else {
+    console.warn("Canzone non trovata nella playlist.");
+  }
+};
+
+newPlayer.addEventListener("click", () => {
+  // Controlla se ci sono canzoni nella playlist e se un indice è valido
+  if (currentPlaylist.length > 0 && currentSongIndex >= 0 && currentSongIndex < currentPlaylist.length) {
+    // Riproduci la canzone all'indice corrente (che dovrebbe essere quella selezionata)
+    playSong(currentPlaylist[currentSongIndex]);
+  } else if (currentPlaylist.length > 0) {
+    // Se la playlist non è vuota ma currentSongIndex non è valido (es. -1 o non impostato)
+    // Potresti voler riprodurre la prima canzone o avvisare l'utente di selezionarne una
+    console.warn("Nessuna canzone selezionata. Riproduco la prima canzone della playlist.");
+    currentSongIndex = 0; // Imposta l'indice alla prima canzone
+    playSong(currentPlaylist[currentSongIndex]);
+  }
+  else {
+    // Se non ci sono canzoni caricate affatto
+    alert("Nessuna canzone caricata! Cerca prima della musica.");
+    getMusicData(); // Opzionalmente, prova a recuperare i dati se la playlist è vuota
+  }
+});
+
 getMusicData();

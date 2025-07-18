@@ -36,19 +36,17 @@ scrollContainer.addEventListener("scroll", function () {
     }
   });
 
-  playButtons.forEach((playButton) => {
-    const header = playButton
-      .closest(".album-container")
-      .querySelectorAll(".header");
+  playButtons.forEach(playButton => {
+    const header = playButton.closest('.album-container').querySelectorAll('.header');
     if (!header) return;
 
-    const headerBottom = header.getBoundingClientRect().bottom;
+    const headerBottom = header.getBoundingClientRect().top;
     const playButtonTop = playButton.getBoundingClientRect().top;
 
     if (headerBottom >= playButtonTop) {
-      playButton.classList.add("sticky-under-header");
+      playButton.classList.add('sticky-under-header');
     } else {
-      playButton.classList.remove("sticky-under-header");
+      playButton.classList.remove('sticky-under-header');
     }
   });
 

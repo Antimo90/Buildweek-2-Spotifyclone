@@ -1,5 +1,5 @@
-/* Sidebar container */
-.sidebar-spotify {
+/* LEFTBAR */
+.leftbar {
   background: rgba(0, 0, 0, 0.92);
   color: #b3b3b3;
   border-radius: 12px;
@@ -14,7 +14,7 @@
   backdrop-filter: blur(2px);
 }
 
-.sidebar-spotify .dropdown .btn {
+.leftbar .dropdown .btn {
   color: #b3b3b3;
   transition: color 0.2s;
   font-size: 1.7rem;
@@ -22,15 +22,17 @@
   border: none;
   box-shadow: none;
 }
-.sidebar-spotify .dropdown .btn:focus {
+
+.leftbar .dropdown .btn:focus {
   outline: none;
   box-shadow: none;
 }
-.sidebar-spotify .dropdown .btn:hover {
+
+.leftbar .dropdown .btn:hover {
   color: #1db954;
 }
 
-.sidebar-spotify .dropdown-menu {
+.leftbar .dropdown-menu {
   background: #232323;
   border-radius: 1rem;
   min-width: 160px;
@@ -39,7 +41,8 @@
   border: none;
   font-size: 1.08rem;
 }
-.sidebar-spotify .dropdown-item {
+
+.leftbar .dropdown-item {
   color: #fff;
   padding: 0.7rem 1.5rem 0.7rem 2.2rem;
   border-radius: 0.7rem;
@@ -49,18 +52,20 @@
   transition: background 0.18s, color 0.18s;
   font-weight: 500;
 }
-.sidebar-spotify .dropdown-item:hover,
-.sidebar-spotify .dropdown-item:focus {
+
+.leftbar .dropdown-item:hover,
+.leftbar .dropdown-item:focus {
   background: #1db954;
   color: #232323;
 }
-.sidebar-spotify .dropdown-item i {
+
+.leftbar .dropdown-item i {
   font-size: 1.1rem;
   margin-right: 0.7rem;
   color: #1db954;
 }
 
-.sidebar-spotify .nav-link {
+.leftbar .nav-link {
   color: #b3b3b3;
   font-weight: 600;
   border-radius: 6px;
@@ -71,27 +76,30 @@
   display: flex;
   align-items: center;
 }
-.sidebar-spotify .nav-link:hover,
-.sidebar-spotify .nav-link.active {
+
+.leftbar .nav-link:hover,
+.leftbar .nav-link.active {
   color: #1db954;
   background: #181818;
 }
-.sidebar-spotify .nav-link i {
+
+.leftbar .nav-link i {
   font-size: 1.3rem;
   margin-right: 12px;
   transition: color 0.2s;
 }
-.sidebar-spotify .nav-link:hover i,
-.sidebar-spotify .nav-link.active i {
+
+.leftbar .nav-link:hover i,
+.leftbar .nav-link.active i {
   color: #1db954;
 }
 
-.sidebar-spotify hr {
+.leftbar hr {
   border-top: 1px solid #232323;
   margin: 16px 0 10px 0;
 }
 
-.sidebar-spotify .nav.flex-column .nav-link.text-secondary {
+.leftbar .nav.flex-column .nav-link.text-secondary {
   color: #b3b3b3;
   font-size: 1rem;
   padding: 7px 20px;
@@ -102,20 +110,147 @@
   text-overflow: ellipsis;
   margin-bottom: 1px;
 }
-.sidebar-spotify .nav.flex-column .nav-link.text-secondary:hover {
+.leftbar .nav.flex-column .nav-link.text-secondary:hover {
   color: #fff;
   background: #232323;
 }
 
-.sidebar-spotify .overflow-auto {
+.leftbar .overflow-auto {
   scrollbar-width: thin;
   scrollbar-color: #232323 #181818;
 }
-.sidebar-spotify .overflow-auto::-webkit-scrollbar {
+.leftbar .overflow-auto::-webkit-scrollbar {
   width: 8px;
   background: #181818;
 }
-.sidebar-spotify .overflow-auto::-webkit-scrollbar-thumb {
+.leftbar .overflow-auto::-webkit-scrollbar-thumb {
   background: #232323;
   border-radius: 4px;
+}
+
+/* RIGHTBAR */
+
+.sideOff {
+  display: none !important;
+}
+
+.rightbar #section-friends {
+  background-color: rgba(255, 255, 255, 0.034);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.321);
+}
+
+main .rightbar #title-friend {
+  margin-top: 11px;
+}
+
+@keyframes formFriend {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.2;
+    transform: translateX(1px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(2px);
+  }
+
+  75% {
+    opacity: 0.7;
+    transform: translateX(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
+
+main .rightbar #myFriendForm {
+  border-left: 1px solid #a5a2a2;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: formFriend 0.2s linear 0s 1 forwards;
+}
+
+main .rightbar #inputFriend {
+  border: none;
+  background-color: #0c0c0c;
+  color: #8e9eab;
+  border-radius: 5px;
+  padding: 3px;
+  width: 9.5em;
+}
+
+main .rightbar #btn-friendForm {
+  border: none;
+  background-color: slategray;
+  width: 6em;
+  height: 2em;
+  margin-top: 1em;
+}
+
+main .rightbar #list-friends {
+  list-style-type: none;
+}
+
+main .rightbar #btn-friendForm:hover {
+  box-shadow: 0px 0px 4px 1px #ebe6e6;
+  transition: all 0.2s linear 0s;
+}
+
+main .rightbar #btn-addFriend {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+main .rightbar #btn-addFriend:hover {
+  border: 1px solid white;
+  border-radius: 40px;
+  box-shadow: 0px 0px 5px 1px white;
+  transition: all 0.1s linear 0s;
+}
+
+.rightbar #btn-close {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.rightbar #riconoscimenti {
+  background-color: rgba(255, 255, 255, 0.034);
+  padding: 1em;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.321);
+}
+
+.rightbar #showAll {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  margin-left: 1em;
+}
+
+.rightbar #btn-follow {
+  border-radius: 20px;
+  background-color: rgba(128, 128, 128, 0);
+  color: white;
+  font-weight: bold;
+}
+
+.rightbar #inTour {
+  background-color: rgba(255, 255, 255, 0.034);
+  padding: 1em;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.321);
+}
+
+.rightbar #title-tour {
+  font-weight: bold;
 }
