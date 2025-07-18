@@ -40,16 +40,170 @@ button:hover {
   color: #1ed760 !important;
 }
 
-.song{
-  font-size: 10px;
+/* --- Media Query per schermi di dimensioni portatile (1024px) --- */
+@media (max-width: 1024px) {
+  .navbar .container-fluid {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Riduci dimensioni copertina e testo per la sezione sinistra */
+  #current-album-cover {
+    width: 35px !important;
+    height: 35px !important;
+    margin-right: 10px !important;
+  }
+
+  #current-song-title,
+  #current-artist-name {
+    font-size: 0.85em;
+  }
+
+  /* Riduci la dimensione delle icone di riproduzione centrali */
+  .d-flex.justify-content-center.mb-2.align-items-center button svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+  }
+
+  /* Riduci la dimensione dell'icona play al centro */
+  #playback svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Riduci la larghezza della barra di progresso e i margini */
+  #progressBar {
+    width: 250px !important;
+  }
+
+  /* Riduci la dimensione del testo dei tempi */
+  #current-time,
+  #total-duration {
+    font-size: 0.8em;
+  }
+
+  /* Riduci la larghezza della barra del volume */
+  #volumeRange {
+    width: 80px !important;
+  }
+
+  /* Riduci la dimensione delle icone nella sezione destra */
+  .d-flex.align-items-center button svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
-svg {
-  width: 1rem;
-  height: 1rem;
+/* Media Query per schermi di dimensioni tablet  */
+@media (max-width: 768px) {
+  .navbar .container-fluid {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Sezione sinistra: immagine, titolo, artista */
+  .navbar .container-fluid > div:nth-child(1) {
+    width: auto;
+  }
+
+  /* Sezione centrale: icone di controllo e barra di riproduzione */
+  .navbar .d-flex.flex-column.justify-content-center {
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar .d-flex.justify-content-center.mb-2.align-items-center button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Riduci la dimensione dell'icona play */
+  #playback svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .navbar .form-range.custom-range-white {
+    /* Rendi la barra di riproduzione larga quanto il contenitore */
+    width: 100% !important;
+  }
+
+  /* Sezione destra: icone dispositivo, aggiungi, play (solo alcune rimarranno) */
+  .navbar .container-fluid > div:nth-child(3) {
+    /* Sposta la sezione destra dopo la sinistra */
+    order: 2;
+    /* Adatta la larghezza al contenuto */
+    width: auto;
+  }
+
+  /* Nascondo gli elementi non desiderati nella sezione destra per tablet */
+  .navbar #info-song,
+  .navbar #song-lyrics,
+  .navbar #song-queue,
+  .navbar #volume-down,
+  .navbar #volumeRange,
+  .navbar #fullscreen {
+    display: none;
+  }
+
+  /* Mostra solo le icone  a destra per tablet: dispositivo e play */
+  #device,
+  #playback {
+    display: block;
+  }
+
+  /* Riduce la dimensione delle icone a destra */
+  #device svg,
+  #cast svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
-#playback svg{
-  width: 1.5rem;
-  height: 1.5rem;
+/* Media Query per schermi di dimensioni mobile  */
+@media (max-width: 576px) {
+  .navbar .d-flex.justify-content-center.mb-2.align-items-center button svg {
+    width: 14px;
+    height: 14px;
+    margin-inline: 6px;
+  }
+
+  #playback svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Nascondo le etichette del tempo su mobile per risparmiare spazio */
+  #current-time,
+  #total-duration {
+    display: none;
+  }
+
+  /*  l'immagine, titolo e artista rimangono compatti */
+  #current-album-cover {
+    width: 30px;
+    height: 30px;
+  }
+
+  #current-song-title,
+  #current-artist-name {
+    font-size: 0.6rem;
+  }
+
+  /*  le icone siano visibili a destra */
+  .navbar .container-fluid > div:nth-child(3) button:not(#device):not(#cast) {
+    display: none;
+  }
+
+  /* Riduce la dimensione delle icone a destra */
+  #device svg,
+  #cast svg {
+    width: 16px;
+    height: 16px;
+  }
 }
